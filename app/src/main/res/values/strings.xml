@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">House</string>
+    <string name="app_name">Коммуналка</string>
+    <string name="password_requirement_characters">Минимум 8 символов</string>
+    <string name="password_requirement_capital">Хотя бы одну букву верхнего регистра</string>
+    <string name="password_requirement_digit">Хотя бы одну цифру</string>
+    <string name="label_sign_in_to_account">Войти в аккаунт</string>
+    <string name="sign_in_to_account_hint">Введите данные, чтобы войти в аккаунт</string>
+    <string name="label_email">E-mail</string>
+    <string name="label_password">Пароль</string>
+    <string name="cd_show_password">Показать пароль</string>
+    <string name="cd_hide_password">Скрыть пароль</string>
+    <string name="password_requirement_satisfied">%s, отвечает требованиям</string>
+    <string name="password_requirement_needed"> %s, необходим</string>
+    <string name="action_sign_in">Войти</string>
+    <string name="error_title">Упсссс</string>
+    <string name="error_action">OK</string>
 </resources>

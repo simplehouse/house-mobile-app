@@ -26,6 +26,12 @@ val Typography = Typography(
         lineHeight = 27.sp,
         color = Black,
     ),
+    subtitle1 = TextStyle(
+        fontFamily = GilroyFontRegular,
+        fontSize = 18.sp,
+        lineHeight = 22.sp,
+        color = Grey,
+    ),
     body1 = TextStyle(
         fontFamily = GilroyFontRegular,
         fontWeight = FontWeight.Normal,
@@ -40,6 +46,6 @@ val Typography = Typography(
     caption = TextStyle(
         fontFamily = GilroyFontMedium,
         fontSize = 10.sp,
-        color = InputCaption,
+        color = Grey,
     )
 )

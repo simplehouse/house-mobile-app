@@ -1,0 +1,60 @@
+package io.devmartynov.house.ui.shared
+
+import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import io.devmartynov.house.ui.theme.*
+
+@Composable
+fun Button(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
+    label: String = "",
+    isLoading: Boolean = false,
+    enabled: Boolean = true,
+) {
+    val noRippleInteractionSource = remember { NoRippleInteractionSource() }
+    val mutableInteractionSource = remember { MutableInteractionSource() }
+
+    Button(
+        modifier = modifier
+            .size(
+                width = 300.dp,
+                height = 50.dp
+            )
+            .animateContentSize(),
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = Blue,
+            disabledBackgroundColor = LightBlue
+        ),
+        onClick = onClick,
+        elevation = null,
+        contentPadding = PaddingValues(15.dp),
+        enabled = enabled && !isLoading,
+        interactionSource = if (isLoading) noRippleInteractionSource else mutableInteractionSource,
+    ) {
+        if (isLoading) {
+            CircularProgressIndicator(
+                modifier = Modifier
+                    .size(26.dp, 26.dp),
+                color = White,
+                strokeWidth = 4.dp,
+            )
+        } else {
+            Text(
+                text = label,
+                fontSize = 18.sp,
+                fontWeight = FontWeight(600),
+                fontFamily = GilroyFontSemibold,
+                color = White,
+            )
+        }
+    }
+}
