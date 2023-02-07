@@ -14,4 +14,17 @@
     <string name="action_sign_in">Войти</string>
     <string name="error_title">Упсссс</string>
     <string name="error_action">OK</string>
+
+    <!-- Profile   -->
+    <string name="label_settings">Настройки</string>
+    <string name="label_profile">Мой профиль</string>
+    <string name="label_theme_option">Тема</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Темная</string>
+    <string name="theme_system">Системная</string>
+    <string name="label_app_version">Версия приложения</string>
+    <string name="cd_go_back">Перейти на предыдущий экран</string>
+    <string name="cd_change_password">Изменить пароль</string>
+    <string name="cd_delete_profile">Удалить профиль</string>
+    <string name="label_statistics">Статистика</string>
 </resources>
