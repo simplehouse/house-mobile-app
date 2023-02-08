@@ -1,10 +1,13 @@
 package io.devmartynov.house.ui.theme
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.LocalOverscrollConfiguration
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 
 private val DarkColorPalette = darkColors(
     primary = Blue,
@@ -27,6 +30,7 @@ private val LightColorPalette = lightColors(
     */
 )
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HouseTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     val colors = if (darkTheme) {
@@ -39,6 +43,10 @@ fun HouseTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable 
         colors = colors,
         typography = Typography,
         shapes = Shapes,
-        content = content
-    )
+    ) {
+        CompositionLocalProvider(
+            LocalOverscrollConfiguration provides null,
+            content = content
+        )
+    }
 }

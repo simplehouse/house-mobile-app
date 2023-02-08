@@ -1,4 +1,4 @@
-package io.devmartynov.house.ui.screen.profile.components
+package io.devmartynov.house.ui.shared
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,10 +13,10 @@ import androidx.compose.ui.unit.dp
 import io.devmartynov.house.ui.theme.Blue
 
 @Composable
-fun OptionIcon(
+fun Symbol(
     modifier: Modifier = Modifier,
     imageVector: ImageVector,
-    color: Color = Blue,
+    tint: Color = Blue,
 ) {
     Surface(
         modifier = modifier.size(42.dp),
@@ -31,7 +31,7 @@ fun OptionIcon(
                 modifier = Modifier.size(28.dp),
                 imageVector = imageVector,
                 contentDescription = null,
-                tint = color,
+                tint = tint,
             )
         }
     }

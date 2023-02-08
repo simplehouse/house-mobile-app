@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import io.devmartynov.house.ui.shared.Symbol
 import io.devmartynov.house.ui.theme.Blue
 import io.devmartynov.house.ui.theme.GilroyFontSemibold
 
@@ -39,9 +40,9 @@ fun ProfileOption(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             if (leadingIcon != null) {
-                OptionIcon(
+                Symbol(
                     imageVector = leadingIcon,
-                    color = iconColor,
+                    tint = iconColor,
                 )
             }
             Spacer(modifier = Modifier.width(10.dp))

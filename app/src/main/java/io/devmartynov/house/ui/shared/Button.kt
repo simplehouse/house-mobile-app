@@ -8,7 +8,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
 import io.devmartynov.house.ui.theme.*
 
@@ -19,23 +21,23 @@ fun Button(
     label: String = "",
     isLoading: Boolean = false,
     enabled: Boolean = true,
+    elevation: ButtonElevation? = null,
+    labelFontSize: TextUnit = 18.sp,
 ) {
     val noRippleInteractionSource = remember { NoRippleInteractionSource() }
     val mutableInteractionSource = remember { MutableInteractionSource() }
 
     Button(
         modifier = modifier
-            .size(
-                width = 300.dp,
-                height = 50.dp
-            )
+            .heightIn(52.dp)
+            .widthIn(52.dp)
             .animateContentSize(),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = Blue,
             disabledBackgroundColor = LightBlue
         ),
         onClick = onClick,
-        elevation = null,
+        elevation = elevation,
         contentPadding = PaddingValues(15.dp),
         enabled = enabled && !isLoading,
         interactionSource = if (isLoading) noRippleInteractionSource else mutableInteractionSource,
@@ -50,8 +52,7 @@ fun Button(
         } else {
             Text(
                 text = label,
-                fontSize = 18.sp,
-                fontWeight = FontWeight(600),
+                fontSize = labelFontSize,
                 fontFamily = GilroyFontSemibold,
                 color = White,
             )
