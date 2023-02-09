@@ -16,21 +16,8 @@ sealed class ActionStatus {
 
     /**
      * Действие загружается повторно. Обновление
-     *
-     * @property lastTime таймстамп последнего обновления
-     * @property counter счетчик обновлений
      */
-    class Refreshing: ActionStatus() {
-        companion object {
-            var lastTime: Long = System.currentTimeMillis()
-            var counter = 0
-        }
-
-        init {
-            lastTime = System.currentTimeMillis()
-            counter++
-        }
-    }
+    object Refreshing : ActionStatus()
 
     /**
      * Во время выполнения действия произошла ошибка
@@ -44,4 +31,31 @@ sealed class ActionStatus {
      * Успешное выполнение действия
      */
     object Success : ActionStatus()
+
+    /**
+     * Происходит ли начальная загрузка
+     *
+     * @return true если происходит загурзка, иначе false
+     */
+    fun isLoading(): Boolean {
+        return this == Loading
+    }
+
+    /**
+     * Происходит ли обновление
+     *
+     * @return true если происходит обновление, иначе false
+     */
+    fun isRefreshing(): Boolean {
+        return this is Refreshing
+    }
+
+    /**
+     * Была ли ошибка при выполнении действия
+     *
+     * @return true если ошибка есть, иначе false
+     */
+    fun hasError(): Boolean {
+        return (this is Error) && this.error.isNullOrBlank()
+    }
 }

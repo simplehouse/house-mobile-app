@@ -40,4 +40,8 @@
     <string name="label_last_meter_readings">Последние показания</string>
     <string name="label_no_meter_readings">Пока нет показаний</string>
 
+    <!-- Add meter reading   -->
+    <string name="label_add_meter_reading">Добавление показания</string>
+    <string name="cd_add_meter_reading">Добавить показание</string>
+    <string name="label_add_meter_reading_hint">Введите 8 цифр показания счетчкика, начиная с левого края</string>
 </resources>

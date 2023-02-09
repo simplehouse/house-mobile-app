@@ -57,7 +57,7 @@ fun NavGraphBuilder.mainGraph(router: Router) {
 
             PasswordRecoveryScreen()
         }
-        bottomSheet(
+        composable(
             route = Route.AddMeterReading.id,
             arguments = Route.AddMeterReading.navArguments,
         ) {
