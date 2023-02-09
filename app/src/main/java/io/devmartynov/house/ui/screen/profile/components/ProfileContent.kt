@@ -33,7 +33,7 @@ fun ProfileContent(
     TopAppBar(
         modifier = Modifier.zIndex(1f),
         backgroundColor = MaterialTheme.colors.surface,
-        contentPadding = PaddingValues(start = 30.dp),
+        contentPadding = PaddingValues(start = 15.dp),
         elevation = 0.dp,
     ) {
         Row(modifier = Modifier.align(Alignment.CenterVertically)) {

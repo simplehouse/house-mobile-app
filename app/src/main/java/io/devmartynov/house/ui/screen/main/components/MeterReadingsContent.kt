@@ -125,8 +125,8 @@ fun MeterReadingsContent(
                             bottomEnd = CornerSize(0.dp),
                         )
                     )
+                    .padding(top = 35.dp)
             ) {
-                Spacer(modifier = Modifier.height(35.dp))
                 Text(
                     modifier = Modifier.padding(horizontal = 30.dp),
                     text = stringResource(id = R.string.label_last_meter_readings),
