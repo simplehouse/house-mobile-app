@@ -38,7 +38,7 @@ class MeterReadingsViewModel : ViewModel() {
      * @param service услуга
      */
     private fun refreshData(service: Service) {
-        val serviceState = uiState.value.get(service).copy(status = ActionStatus.Refreshing())
+        val serviceState = uiState.value.get(service).copy(status = ActionStatus.Refreshing)
 
         updateState(serviceState)
 
