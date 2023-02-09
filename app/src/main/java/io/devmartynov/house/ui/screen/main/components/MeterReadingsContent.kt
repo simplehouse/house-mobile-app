@@ -23,7 +23,7 @@ import com.google.accompanist.pager.*
 import io.devmartynov.house.R
 import io.devmartynov.house.ui.screen.main.model.MeterReadingsEvent
 import io.devmartynov.house.ui.screen.main.model.MeterReadingsState
-import io.devmartynov.house.ui.screen.main.model.Services
+import io.devmartynov.house.ui.screen.main.model.Service
 import io.devmartynov.house.ui.shared.gradientBackground
 import io.devmartynov.house.ui.theme.*
 import kotlin.math.max
@@ -44,7 +44,7 @@ fun MeterReadingsContent(
             .gradientBackground(listOf(LightBlue, Blue), angle = 125f)
     ) {
         val screenHeight = maxHeight
-        val pageCount = Services.values().size
+        val pageCount = Service.values().size
         val pagerState = rememberPagerState(initialPage = 0)
 
         TopAppBar(
@@ -64,7 +64,7 @@ fun MeterReadingsContent(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = stringResource(id = Services.values()[pagerState.currentPage].label),
+                        text = stringResource(id = Service.values()[pagerState.currentPage].label),
                         color = White,
                         textAlign = TextAlign.Center,
                         fontFamily = GilroyFontMedium,

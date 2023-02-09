@@ -9,5 +9,5 @@ sealed class MeterReadingsEvent {
      *
      * @param service услуга
      */
-    class DataRefreshed(val service: Services) : MeterReadingsEvent()
+    class DataRefreshed(val service: Service) : MeterReadingsEvent()
 }

@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import io.devmartynov.house.ui.screen.main.model.MeterReadingsEvent
 import io.devmartynov.house.ui.screen.main.model.MeterReadingsState
 import io.devmartynov.house.ui.screen.main.model.ServiceState
-import io.devmartynov.house.ui.screen.main.model.Services
+import io.devmartynov.house.ui.screen.main.model.Service
 import io.devmartynov.house.ui.shared.model.ActionStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -37,7 +37,7 @@ class MeterReadingsViewModel : ViewModel() {
      *
      * @param service услуга
      */
-    private fun refreshData(service: Services) {
+    private fun refreshData(service: Service) {
         val serviceState = uiState.value.get(service).copy(status = ActionStatus.Refreshing())
 
         updateState(serviceState)
@@ -54,13 +54,13 @@ class MeterReadingsViewModel : ViewModel() {
 
     private fun updateState(serviceState: ServiceState) {
         when (serviceState.service) {
-            Services.GAS -> {
+            Service.GAS -> {
                 uiState.value = uiState.value.copy(gas = serviceState)
             }
-            Services.WATER -> {
+            Service.WATER -> {
                 uiState.value = uiState.value.copy(water = serviceState)
             }
-            Services.ELECTRICITY -> {
+            Service.ELECTRICITY -> {
                 uiState.value = uiState.value.copy(electricity = serviceState)
             }
         }

@@ -14,5 +14,5 @@ data class MeterReading(
     val createDate: String,
     val isExpired: Boolean,
     val amount: Int,
-    val service: Services,
+    val service: Service,
 )

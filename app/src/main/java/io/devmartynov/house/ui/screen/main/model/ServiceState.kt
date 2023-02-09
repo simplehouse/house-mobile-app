@@ -12,5 +12,5 @@ import io.devmartynov.house.ui.shared.model.ActionStatus
 data class ServiceState(
     val status: ActionStatus = ActionStatus.Idle,
     val meterReadings: List<MeterReading> = emptyList(),
-    val service: Services = Services.GAS
+    val service: Service = Service.GAS
 )
