@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import io.devmartynov.house.BuildConfig
 import io.devmartynov.house.R
 import io.devmartynov.house.ui.screen.profile.model.ProfileState
-import io.devmartynov.house.ui.screen.profile.model.Theme
+import io.devmartynov.house.ui.shared.model.Theme
 import io.devmartynov.house.ui.shared.Divider
 import io.devmartynov.house.ui.theme.Red
 

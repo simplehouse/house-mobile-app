@@ -19,13 +19,16 @@ import androidx.compose.ui.zIndex
 import io.devmartynov.house.ui.screen.profile.model.ProfileEvent
 import io.devmartynov.house.ui.screen.profile.model.ProfileState
 import io.devmartynov.house.R
-import io.devmartynov.house.ui.screen.profile.model.Theme
+import io.devmartynov.house.ui.shared.model.Theme
 
 @Composable
 fun ProfileContent(
     modifier: Modifier = Modifier,
     profileState: ProfileState = ProfileState(),
     handleEvent: (event: ProfileEvent) -> Unit = {},
+    navigateToStatistics: () -> Unit = {},
+    navigateToPasswordRecovery: () -> Unit = {},
+    navigateToMetersReading: () -> Unit = {},
 ) {
     TopAppBar(
         modifier = Modifier.zIndex(1f),
@@ -37,9 +40,7 @@ fun ProfileContent(
             Icon(
                 modifier = Modifier.clickable(
                     onClickLabel = stringResource(id = R.string.cd_go_back),
-                    onClick = {
-                        // TODO navigate to main screen
-                    }
+                    onClick = navigateToMetersReading
                 ),
                 tint = MaterialTheme.colors.onSurface,
                 imageVector = Icons.Default.ArrowBack,
@@ -64,8 +65,8 @@ fun ProfileContent(
         ProfileSection(
             title = stringResource(id = R.string.label_settings),
             uiState = profileState,
-            onNavigateStatistic = {},
-            onNavigateChangePassword = {},
+            onNavigateStatistic = navigateToStatistics,
+            onNavigateChangePassword = navigateToPasswordRecovery,
             onChangeTheme = { theme: Theme ->
                 handleEvent(ProfileEvent.ThemeChanged(theme))
             },

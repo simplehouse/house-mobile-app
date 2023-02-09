@@ -1,22 +1,29 @@
-package io.devmartynov.house.ui.screen.auth
+package io.devmartynov.house.ui.screen.auth.signIn
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import io.devmartynov.house.domain.useCase.SignInUseCase
 import io.devmartynov.house.ui.screen.auth.model.PasswordRequirements
-import io.devmartynov.house.ui.screen.auth.model.SignInEvent
-import io.devmartynov.house.ui.screen.auth.model.SignInState
+import io.devmartynov.house.ui.screen.auth.signIn.model.SignInEvent
+import io.devmartynov.house.ui.screen.auth.signIn.model.SignInState
+import io.devmartynov.house.ui.shared.model.ActionStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 private const val MIN_PASSWORD_LENGTH = 8
 
 /**
  * Вью модель авторизации пользователя
  */
-class SignInViewModel : ViewModel() {
+@HiltViewModel
+class SignInViewModel @Inject constructor(
+    private val signInUseCase: SignInUseCase
+) : ViewModel() {
     val uiState = MutableStateFlow(SignInState())
 
     /**
@@ -44,22 +51,24 @@ class SignInViewModel : ViewModel() {
      * Убирает API ошибку авторизации
      */
     private fun dismissError() {
-        uiState.value = uiState.value.copy(error = null)
+        uiState.value = uiState.value.copy(status = ActionStatus.Idle)
     }
 
     /**
      * Выполняет авторизацию пользователя
      */
     private fun signIn() {
-        uiState.value = uiState.value.copy(isLoading = true)
+        uiState.value = uiState.value.copy(status = ActionStatus.Loading)
         viewModelScope.launch(Dispatchers.IO) {
-            // TODO repository method execution
+            signInUseCase()
             delay(2000L)
 
             withContext(Dispatchers.Main) {
+//                uiState.value = uiState.value.copy(
+//                    status = ActionStatus.Error("Что-то пошло не так!")
+//                )
                 uiState.value = uiState.value.copy(
-                    isLoading = false,
-                    error = "Что-то пошло не так!"
+                    status = ActionStatus.Success
                 )
             }
         }

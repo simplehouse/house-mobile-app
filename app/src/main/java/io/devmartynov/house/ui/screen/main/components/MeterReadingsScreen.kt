@@ -2,23 +2,29 @@ package io.devmartynov.house.ui.screen.main.components
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.rememberPagerState
-import io.devmartynov.house.ui.screen.main.MeterReadingsViewModel
-import io.devmartynov.house.ui.theme.HouseTheme
+import io.devmartynov.house.ui.navigation.router.Router
+import io.devmartynov.house.ui.screen.main.model.MeterReadingsEvent
+import io.devmartynov.house.ui.screen.main.model.MeterReadingsState
 
 @Composable
-fun MeterReadingsScreen() {
-    val viewModel: MeterReadingsViewModel = viewModel()
-
-    HouseTheme {
-        MeterReadingsContent(
-            modifier = Modifier.fillMaxSize(),
-            meterReadingsState = viewModel.uiState.collectAsState().value,
-            handleEvent = viewModel::handleEvent,
-        )
-    }
+fun MeterReadingsScreen(
+    router: Router,
+    uiState: MeterReadingsState = MeterReadingsState(),
+    handleEvent: (event: MeterReadingsEvent) -> Unit = {},
+) {
+    MeterReadingsContent(
+        modifier = Modifier.fillMaxSize(),
+        meterReadingsState = uiState,
+        handleEvent = handleEvent,
+        navigateToProfile = {
+            router.navigateToProfile()
+        },
+        navigateToAddMeterReading = { service: Int ->
+            router.navigateToAddMeterReading(service)
+        },
+        navigateToMeterReading = {meterReadingId: Int ->
+            router.navigateToMeterReading(meterReadingId)
+        }
+    )
 }

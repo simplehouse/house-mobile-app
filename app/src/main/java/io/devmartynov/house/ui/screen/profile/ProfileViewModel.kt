@@ -3,7 +3,7 @@ package io.devmartynov.house.ui.screen.profile
 import androidx.lifecycle.ViewModel
 import io.devmartynov.house.ui.screen.profile.model.ProfileEvent
 import io.devmartynov.house.ui.screen.profile.model.ProfileState
-import io.devmartynov.house.ui.screen.profile.model.Theme
+import io.devmartynov.house.ui.shared.model.Theme
 import kotlinx.coroutines.flow.MutableStateFlow
 
 /**

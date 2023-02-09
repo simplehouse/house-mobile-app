@@ -1,4 +1,4 @@
-package io.devmartynov.house.ui.screen.profile.model
+package io.devmartynov.house.ui.shared.model
 
 import androidx.annotation.StringRes
 import io.devmartynov.house.R

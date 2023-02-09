@@ -1,4 +1,7 @@
-package io.devmartynov.house.ui.screen.auth.model
+package io.devmartynov.house.ui.screen.auth.signIn.model
+
+import io.devmartynov.house.ui.screen.auth.model.PasswordRequirements
+import io.devmartynov.house.ui.shared.model.ActionStatus
 
 /**
  * Состояние экрана авторизации
@@ -6,15 +9,13 @@ package io.devmartynov.house.ui.screen.auth.model
  * @param email e-mail пользователя. он же логин для входа
  * @param password пароль для входа
  * @param completedPasswordRequirements выполненные требования к паролю. Нужны для валидации перед отравкой данных
- * @param isLoading выполняется ли сейчас запрос к API для отправки данных формы
- * @param error ошибка при выполнении запроса к API
+ * @param status статус выполнения авторизации
  */
 data class SignInState(
     val email: String? = null,
     val password: String? = null,
     val completedPasswordRequirements: List<PasswordRequirements> = emptyList(),
-    val isLoading: Boolean = false,
-    val error: String? = null,
+    val status: ActionStatus = ActionStatus.Idle,
 ) {
 
     /**

@@ -1,4 +1,4 @@
-package io.devmartynov.house.ui.screen.auth.model
+package io.devmartynov.house.ui.screen.auth.signIn.model
 
 /**
  * События на экране авторизации

@@ -18,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import com.google.accompanist.pager.*
 import io.devmartynov.house.R
 import io.devmartynov.house.ui.screen.main.model.MeterReadingsEvent
@@ -25,6 +26,7 @@ import io.devmartynov.house.ui.screen.main.model.MeterReadingsState
 import io.devmartynov.house.ui.screen.main.model.Services
 import io.devmartynov.house.ui.shared.gradientBackground
 import io.devmartynov.house.ui.theme.*
+import kotlin.math.max
 import kotlin.math.min
 
 @OptIn(ExperimentalPagerApi::class)
@@ -33,6 +35,9 @@ fun MeterReadingsContent(
     modifier: Modifier = Modifier,
     meterReadingsState: MeterReadingsState = MeterReadingsState(),
     handleEvent: (event: MeterReadingsEvent) -> Unit = {},
+    navigateToProfile: () -> Unit = {},
+    navigateToAddMeterReading: (service: Int) -> Unit = {},
+    navigateToMeterReading: (meterReadingId: Int) -> Unit = {},
 ) {
     BoxWithConstraints(
         modifier = modifier
@@ -43,6 +48,7 @@ fun MeterReadingsContent(
         val pagerState = rememberPagerState(initialPage = 0)
 
         TopAppBar(
+            modifier = Modifier.zIndex(1f),
             backgroundColor = Color.Transparent,
             contentPadding = PaddingValues(start = 30.dp, end = 30.dp),
             elevation = 0.dp,
@@ -78,7 +84,7 @@ fun MeterReadingsContent(
                     modifier = Modifier.clickable(
                         onClickLabel = stringResource(id = R.string.cd_go_to_profile),
                         onClick = {
-                            // TODO navigate to profile screen
+                            navigateToProfile()
                         }
                     ),
                     tint = White,
@@ -88,6 +94,9 @@ fun MeterReadingsContent(
             }
         }
         val scrollState = rememberScrollState()
+        val cornerSize = max(-(scrollState.value * 0.05f - 50), 0f)
+        val absoluteOffset = (scrollState.value * 0.2f)
+        val alpha = min(1f, 1 - (scrollState.value / 700f))
         Column(
             modifier = modifier
                 .verticalScroll(state = scrollState),
@@ -96,11 +105,11 @@ fun MeterReadingsContent(
             ServiceStatus(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .absoluteOffset(y = (scrollState.value * 0.2f).dp)
-                    .alpha(min(1f, 1 - (scrollState.value / 700f))),
+                    .absoluteOffset(y = absoluteOffset.dp)
+                    .alpha(alpha),
                 meterReadingEnteringDate = if (pagerState.currentPage == 1) "10.01.2023" else "23.03.2023",
                 navigateToAddMeterReading = {
-                    // TODO navigate to add meter reading
+                    navigateToAddMeterReading(pagerState.currentPage)
                 }
             )
             Spacer(modifier = Modifier.height(80.dp))
@@ -110,8 +119,8 @@ fun MeterReadingsContent(
                     .background(
                         color = White,
                         shape = Shapes.small.copy(
-                            topStart = CornerSize(50.dp),
-                            topEnd = CornerSize(50.dp),
+                            topStart = CornerSize(cornerSize.dp),
+                            topEnd = CornerSize(cornerSize.dp),
                             bottomStart = CornerSize(0.dp),
                             bottomEnd = CornerSize(0.dp),
                         )
@@ -133,9 +142,7 @@ fun MeterReadingsContent(
                     MeterReadingsList(
                         modifier = Modifier.fillMaxSize(),
                         meterReadings = meterReadingsState.get(pageIndex).meterReadings,
-                        onMeterReadingClick = {
-                            // TODO navigate to meter reading detail info
-                        },
+                        onMeterReadingClick = navigateToMeterReading,
                     )
                 }
             }

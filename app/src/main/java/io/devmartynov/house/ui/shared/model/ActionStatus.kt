@@ -38,4 +38,10 @@ sealed class ActionStatus {
      * @param error текст ошибки
      */
     class Error(val error: String? = null) : ActionStatus()
+
+
+    /**
+     * Успешное выполнение действия
+     */
+    object Success : ActionStatus()
 }
