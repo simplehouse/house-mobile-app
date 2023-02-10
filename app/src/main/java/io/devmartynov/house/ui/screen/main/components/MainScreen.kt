@@ -4,18 +4,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import io.devmartynov.house.ui.navigation.router.Router
-import io.devmartynov.house.ui.screen.main.model.MeterReadingsEvent
-import io.devmartynov.house.ui.screen.main.model.MeterReadingsState
+import io.devmartynov.house.ui.screen.main.model.MainScreenEvent
+import io.devmartynov.house.ui.screen.main.model.MainScreenState
 
 @Composable
-fun MeterReadingsScreen(
+fun MainScreen(
     router: Router,
-    uiState: MeterReadingsState = MeterReadingsState(),
-    handleEvent: (event: MeterReadingsEvent) -> Unit = {},
+    uiState: MainScreenState = MainScreenState(),
+    handleEvent: (event: MainScreenEvent) -> Unit = {},
 ) {
-    MeterReadingsContent(
+    MainScreenContent(
         modifier = Modifier.fillMaxSize(),
-        meterReadingsState = uiState,
+        uiState = uiState,
         handleEvent = handleEvent,
         navigateToProfile = {
             router.navigateToProfile()
@@ -23,7 +23,7 @@ fun MeterReadingsScreen(
         navigateToAddMeterReading = { service: Int ->
             router.navigateToAddMeterReading(service)
         },
-        navigateToMeterReading = {meterReadingId: Int ->
+        navigateToMeterReading = { meterReadingId: Int ->
             router.navigateToMeterReading(meterReadingId)
         }
     )

@@ -21,9 +21,9 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.google.accompanist.pager.*
 import io.devmartynov.house.R
-import io.devmartynov.house.ui.screen.main.model.MeterReadingsEvent
-import io.devmartynov.house.ui.screen.main.model.MeterReadingsState
-import io.devmartynov.house.ui.screen.main.model.Service
+import io.devmartynov.house.domain.model.Service
+import io.devmartynov.house.ui.screen.main.model.MainScreenEvent
+import io.devmartynov.house.ui.screen.main.model.MainScreenState
 import io.devmartynov.house.ui.shared.gradientBackground
 import io.devmartynov.house.ui.theme.*
 import kotlin.math.max
@@ -31,13 +31,13 @@ import kotlin.math.min
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun MeterReadingsContent(
+fun MainScreenContent(
     modifier: Modifier = Modifier,
-    meterReadingsState: MeterReadingsState = MeterReadingsState(),
-    handleEvent: (event: MeterReadingsEvent) -> Unit = {},
-    navigateToProfile: () -> Unit = {},
-    navigateToAddMeterReading: (service: Int) -> Unit = {},
-    navigateToMeterReading: (meterReadingId: Int) -> Unit = {},
+    uiState: MainScreenState,
+    handleEvent: (event: MainScreenEvent) -> Unit,
+    navigateToProfile: () -> Unit,
+    navigateToAddMeterReading: (service: Int) -> Unit,
+    navigateToMeterReading: (meterReadingId: Int) -> Unit,
 ) {
     BoxWithConstraints(
         modifier = modifier
@@ -107,7 +107,12 @@ fun MeterReadingsContent(
                     .fillMaxWidth()
                     .absoluteOffset(y = absoluteOffset.dp)
                     .alpha(alpha),
-                meterReadingEnteringDate = if (pagerState.currentPage == 1) "10.01.2023" else "23.03.2023",
+                meterReadingEnteringDate = when (pagerState.currentPage) {
+                    0 -> uiState.gasDate
+                    1 -> uiState.waterDate
+                    2 -> uiState.electricityDate
+                    else -> ""
+                },
                 navigateToAddMeterReading = {
                     navigateToAddMeterReading(pagerState.currentPage)
                 }
@@ -139,10 +144,10 @@ fun MeterReadingsContent(
                     modifier = Modifier
                         .fillMaxHeight(),
                 ) { pageIndex ->
-                    MeterReadingsList(
+                    MeterReadingsPage(
                         modifier = Modifier.fillMaxSize(),
-                        meterReadings = meterReadingsState.get(pageIndex).meterReadings,
                         onMeterReadingClick = navigateToMeterReading,
+                        service = Service.values()[pageIndex],
                     )
                 }
             }

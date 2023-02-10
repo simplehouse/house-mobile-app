@@ -8,8 +8,8 @@ import com.google.accompanist.navigation.material.ExperimentalMaterialNavigation
 import com.google.accompanist.navigation.material.bottomSheet
 import io.devmartynov.house.ui.navigation.model.Route
 import io.devmartynov.house.ui.navigation.model.RoutesGroup
-import io.devmartynov.house.ui.screen.main.MeterReadingsViewModel
-import io.devmartynov.house.ui.screen.main.components.MeterReadingsScreen
+import io.devmartynov.house.ui.screen.main.MainScreenViewModel
+import io.devmartynov.house.ui.screen.main.components.MainScreen
 import io.devmartynov.house.ui.screen.profile.ProfileViewModel
 import io.devmartynov.house.ui.screen.profile.components.ProfileScreen
 import io.devmartynov.house.ui.navigation.router.Router
@@ -17,7 +17,6 @@ import io.devmartynov.house.ui.screen.addMeterReading.AddMeterReadingViewModel
 import io.devmartynov.house.ui.screen.addMeterReading.components.AddMeterReadingScreen
 import io.devmartynov.house.ui.screen.auth.passwordRecovery.PasswordRecoveryViewModel
 import io.devmartynov.house.ui.screen.auth.passwordRecovery.components.PasswordRecoveryScreen
-import io.devmartynov.house.ui.screen.meterReading.MeterReadingViewModel
 import io.devmartynov.house.ui.screen.meterReading.components.MeterReadingScreen
 import io.devmartynov.house.ui.screen.statistics.components.StatisticsScreen
 
@@ -28,10 +27,10 @@ fun NavGraphBuilder.mainGraph(router: Router) {
         startDestination = Route.MeterReadings.id,
     ) {
         composable(Route.MeterReadings.id) {
-            val viewModel = hiltViewModel<MeterReadingsViewModel>()
+            val viewModel = hiltViewModel<MainScreenViewModel>()
             val uiState = viewModel.uiState.collectAsState().value
 
-            MeterReadingsScreen(
+            MainScreen(
                 router = router,
                 uiState = uiState,
                 handleEvent = viewModel::handleEvent,

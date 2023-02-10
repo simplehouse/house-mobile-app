@@ -21,7 +21,7 @@ import io.devmartynov.house.ui.theme.White
 @Composable
 fun ServiceStatus(
     modifier: Modifier = Modifier,
-    meterReadingEnteringDate: String,
+    meterReadingEnteringDate: String?,
     navigateToAddMeterReading: () -> Unit,
 ) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
@@ -34,7 +34,7 @@ fun ServiceStatus(
         )
         Spacer(modifier = Modifier.height(20.dp))
         Text(
-            text = meterReadingEnteringDate,
+            text = meterReadingEnteringDate ?: "",
             fontFamily = GilroyFontSemibold,
             fontSize = 32.sp,
             lineHeight = 39.sp,

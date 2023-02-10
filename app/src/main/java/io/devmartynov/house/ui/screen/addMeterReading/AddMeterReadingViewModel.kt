@@ -4,11 +4,11 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.devmartynov.house.domain.model.Service
 import io.devmartynov.house.domain.useCase.SaveMeterReadingUseCase
 import io.devmartynov.house.ui.navigation.model.Route
 import io.devmartynov.house.ui.screen.addMeterReading.model.AddMeterReadingEvent
 import io.devmartynov.house.ui.screen.addMeterReading.model.AddMeterReadingState
-import io.devmartynov.house.ui.screen.main.model.Service
 import io.devmartynov.house.ui.shared.model.ActionStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

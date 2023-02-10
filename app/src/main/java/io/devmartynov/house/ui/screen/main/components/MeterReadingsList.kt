@@ -10,13 +10,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import io.devmartynov.house.R
-import io.devmartynov.house.ui.screen.main.model.MeterReading
+import io.devmartynov.house.domain.model.MeterReading
+import io.devmartynov.house.domain.model.Service
 import io.devmartynov.house.ui.shared.Divider
 
 @Composable
 fun MeterReadingsList(
     modifier: Modifier = Modifier,
     meterReadings: List<MeterReading> = emptyList(),
+    service: Service = Service.GAS,
     onMeterReadingClick: (meterReadingId: Int) -> Unit = {},
 ) {
     LazyColumn(
@@ -35,7 +37,7 @@ fun MeterReadingsList(
         items(meterReadings) { meterReading: MeterReading ->
             MeterReadingItem(
                 date = meterReading.createDate,
-                amount = meterReading.amount,
+                amount = meterReading.toPayAmount,
                 isExpired = meterReading.isExpired,
                 onClick = {
                     onMeterReadingClick(meterReading.id)

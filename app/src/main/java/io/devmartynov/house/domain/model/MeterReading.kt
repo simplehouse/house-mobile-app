@@ -1,7 +1,5 @@
 package io.devmartynov.house.domain.model
 
-import io.devmartynov.house.ui.screen.main.model.Service
-
 /**
  * Показание счетчика
  *

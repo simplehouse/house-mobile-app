@@ -1,4 +1,4 @@
-package io.devmartynov.house.ui.screen.main.model
+package io.devmartynov.house.domain.model
 
 import androidx.annotation.StringRes
 import io.devmartynov.house.R
