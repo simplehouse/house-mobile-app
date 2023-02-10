@@ -73,10 +73,11 @@ fun NavGraphBuilder.mainGraph(router: Router) {
         bottomSheet(
             route = Route.MeterReading.id,
             arguments = Route.MeterReading.navArguments,
-        ) {
-            val viewModel = hiltViewModel<MeterReadingViewModel>()
-
-            MeterReadingScreen()
+        ) { navBackStackEntry ->
+            MeterReadingScreen(
+                navBackStackEntry = navBackStackEntry,
+                navigateToInvoicePreview = {}
+            )
         }
     }
 }

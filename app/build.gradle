@@ -70,7 +70,7 @@ dependencies {
     // accompanist
     implementation "com.google.accompanist:accompanist-pager:$pager_version"
     implementation "com.google.accompanist:accompanist-pager-indicators:$pager_version"
-    implementation "com.google.accompanist:accompanist-navigation-material:0.28.0"
+    implementation "com.google.accompanist:accompanist-navigation-material:$accompanist_navigation_material"
 
     // hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"

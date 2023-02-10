@@ -13,9 +13,9 @@ buildscript {
         glide_version = '1.0.0-alpha.1'
         pager_version = '0.28.0'
         hilt_version = '2.44'
-        hilt_compose_nav_version = '1.0.0'
+        hilt_compose_nav_version = '1.1.0-alpha01'
         appcompat_version = '1.6.0'
-        accompanist_navigation_material = ''
+        accompanist_navigation_material = '0.28.0'
 
         kotlin_compiler_extension_version = '1.2.0'
     }

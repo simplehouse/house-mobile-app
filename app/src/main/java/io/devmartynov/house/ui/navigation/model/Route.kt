@@ -1,5 +1,6 @@
 package io.devmartynov.house.ui.navigation.model
 
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
 
@@ -45,6 +46,10 @@ sealed class Route(val baseId: String) {
 
         fun buildRoute(meterReadingId: Int): String {
             return "$baseId/$meterReadingId"
+        }
+
+        fun getMeterReadingId(backStackEntry: NavBackStackEntry): Int? {
+            return backStackEntry.arguments?.getInt(PARAM_METER_READING_ID)
         }
     }
 }
