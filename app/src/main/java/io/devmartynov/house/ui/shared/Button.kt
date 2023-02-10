@@ -7,22 +7,22 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
 import io.devmartynov.house.ui.theme.*
 
 @Composable
 fun Button(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit = {},
     label: String = "",
     isLoading: Boolean = false,
     enabled: Boolean = true,
     elevation: ButtonElevation? = null,
     labelFontSize: TextUnit = 18.sp,
+    imageVector: ImageVector? = null,
+    onClick: () -> Unit = {},
 ) {
     val noRippleInteractionSource = remember { NoRippleInteractionSource() }
     val mutableInteractionSource = remember { MutableInteractionSource() }
@@ -48,6 +48,12 @@ fun Button(
                     .size(26.dp, 26.dp),
                 color = White,
                 strokeWidth = 4.dp,
+            )
+        } else if (imageVector != null) {
+            Icon(
+                imageVector = imageVector,
+                contentDescription = null,
+                tint = White,
             )
         } else {
             Text(

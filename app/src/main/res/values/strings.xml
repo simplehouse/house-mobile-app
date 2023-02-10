@@ -44,4 +44,17 @@
     <string name="label_add_meter_reading">Добавление показания</string>
     <string name="cd_add_meter_reading">Добавить показание</string>
     <string name="label_add_meter_reading_hint">Введите 8 цифр показания счетчкика, начиная с левого края</string>
+
+    <!-- Meter reading   -->
+    <string name="label_meter_reading">Показание счетчика</string>
+    <string name="label_meter_reading_value">Значение по счетчику</string>
+    <string name="label_usage_amount">Количество</string>
+    <string name="label_diff_with_prev_value">Разница с прошлым месяцем</string>
+    <string name="label_create_date">Дата подачи показания</string>
+    <string name="label_to_pay_amount">Сумма к оплате</string>
+    <string name="label_measure">%s м3</string>
+    <string name="label_amount_with_currency">%s руб.</string>
+    <string name="label_see_invoice">Посмотреть квитанцию</string>
+    <string name="label_share_invoice">Поделиться квитанцией</string>
+    <string name="label_download_invoice">Загрузить квитанцию</string>
 </resources>
