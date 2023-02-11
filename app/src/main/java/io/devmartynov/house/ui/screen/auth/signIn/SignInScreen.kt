@@ -3,6 +3,7 @@ package io.devmartynov.house.ui.screen.auth.signIn
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import io.devmartynov.house.ui.screen.auth.signIn.components.SignInContent
 import io.devmartynov.house.ui.screen.auth.signIn.model.SignInEvent
 import io.devmartynov.house.ui.screen.auth.signIn.model.SignInState
 

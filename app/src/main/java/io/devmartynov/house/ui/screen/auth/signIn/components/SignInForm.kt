@@ -1,4 +1,4 @@
-package io.devmartynov.house.ui.screen.auth.signIn
+package io.devmartynov.house.ui.screen.auth.signIn.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
