@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.devmartynov.house.AuthImpl
 import io.devmartynov.house.domain.model.Auth
+import io.devmartynov.house.domain.repositories.AuthStore
 import javax.inject.Singleton
 
 @Module
@@ -14,7 +15,7 @@ class AuthModule {
 
     @Provides
     @Singleton
-    fun providesAuth(): Auth {
-        return AuthImpl()
+    fun providesAuth(authStore: AuthStore): Auth {
+        return AuthImpl(authStore)
     }
 }

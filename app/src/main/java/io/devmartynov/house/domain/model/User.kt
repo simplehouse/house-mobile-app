@@ -7,12 +7,12 @@ package io.devmartynov.house.domain.model
  * @param email адрес эл. почты, он же логин
  * @param isBanned забанен ли пользователь
  * @param name имя пользователя
- * @param role роль пользователя в приложении
+ * @param avatarUrl ссылка на аватар пользователя
  */
 data class User(
     val id: Int,
-    val email: Int,
+    val email: String,
     val isBanned: Boolean,
     val name: String,
-    val role: UserRole
+    val avatarUrl: String?,
 )

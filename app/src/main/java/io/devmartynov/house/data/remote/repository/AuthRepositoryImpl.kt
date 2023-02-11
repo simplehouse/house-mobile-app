@@ -2,11 +2,11 @@ package io.devmartynov.house.data.remote.repository
 
 import io.devmartynov.house.data.remote.AuthApi
 import io.devmartynov.house.data.remote.mappers.toDomainModel
-import io.devmartynov.house.domain.model.InitResponse
 import io.devmartynov.house.domain.model.Result
 import io.devmartynov.house.domain.model.SignInResponse
 import io.devmartynov.house.domain.repositories.AuthRepository
 import javax.inject.Inject
+import io.devmartynov.house.domain.model.User
 
 class AuthRepositoryImpl @Inject constructor(
     private val authApi: AuthApi
@@ -45,7 +45,7 @@ class AuthRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun init(): Result<InitResponse> {
+    override suspend fun getUser(): Result<User> {
         try {
             val response = authApi.init()
 
@@ -54,9 +54,7 @@ class AuthRepositoryImpl @Inject constructor(
                     return Result.Failure(response.errorBody().toString())
                 }
                 val user = response.body()!!.user.toDomainModel()
-                return Result.Success(
-                    InitResponse(user = user)
-                )
+                return Result.Success(user)
             }
             return Result.Failure(
                 "Error while init executing. Error: ${

@@ -6,6 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import io.devmartynov.house.AppConfig
 import io.devmartynov.house.ui.shared.model.ThemeManager
 import io.devmartynov.house.ui.shared.model.ThemeManagerImpl
 import javax.inject.Singleton
@@ -18,7 +19,14 @@ class Helper {
     @Singleton
     fun providesThemeManager(
         @ApplicationContext context: Context,
+        appConfig: AppConfig,
     ): ThemeManager {
-        return ThemeManagerImpl(context)
+        return ThemeManagerImpl(context, appConfig)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppConfig(): AppConfig {
+        return AppConfig()
     }
 }

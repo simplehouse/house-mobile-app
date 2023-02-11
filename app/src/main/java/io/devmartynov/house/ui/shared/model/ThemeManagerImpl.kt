@@ -9,20 +9,25 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
+import io.devmartynov.house.AppConfig
 
 class ThemeManagerImpl @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val appConfig: AppConfig,
 ) : ThemeManager {
     private val preferences: SharedPreferences =
         context.getSharedPreferences(
-            PREF_NAME,
+            appConfig.SETTINGS_PREFERENCES_NAME,
             Context.MODE_PRIVATE
         )
     private val _theme = MutableStateFlow(getThemeFromPreferences())
     override val theme: StateFlow<Theme> = _theme.asStateFlow()
 
     private fun getThemeFromPreferences(): Theme {
-        val ordinal = preferences.getInt(KEY_THEME, Theme.SYSTEM.ordinal)
+        val ordinal = preferences.getInt(
+            appConfig.SETTINGS_PREFERENCES_THEME_KEY,
+            Theme.SYSTEM.ordinal
+        )
         return Theme.values()[ordinal]
     }
 
@@ -35,7 +40,7 @@ class ThemeManagerImpl @Inject constructor(
             }
         )
         preferences.edit {
-            putInt(KEY_THEME, theme.ordinal)
+            putInt(appConfig.SETTINGS_PREFERENCES_THEME_KEY, theme.ordinal)
         }
         _theme.value = theme
     }
@@ -46,10 +51,5 @@ class ThemeManagerImpl @Inject constructor(
             Theme.LIGHT -> false
             Theme.SYSTEM -> null
         }
-    }
-
-    companion object {
-        private const val PREF_NAME = "theme"
-        private const val KEY_THEME = "app_theme"
     }
 }

@@ -19,7 +19,6 @@ interface AuthApi {
         @Field("password") password: String
     ): Response<SignInResponse>
 
-    @FormUrlEncoded
     @POST("init")
     suspend fun init(): Response<InitResponse>
 }

@@ -1,15 +1,26 @@
 package io.devmartynov.house.ui.screen.profile
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import io.devmartynov.house.domain.useCase.GetUserUseCase
 import io.devmartynov.house.ui.screen.profile.model.ProfileEvent
 import io.devmartynov.house.ui.screen.profile.model.ProfileState
 import io.devmartynov.house.ui.shared.model.Theme
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+import io.devmartynov.house.domain.model.Result
+import kotlinx.coroutines.withContext
 
 /**
  * Вью модель профиля пользователя
  */
-class ProfileViewModel : ViewModel() {
+@HiltViewModel
+class ProfileViewModel @Inject constructor(
+    private val getUserUseCase: GetUserUseCase,
+) : ViewModel() {
     val uiState = MutableStateFlow(ProfileState())
 
     init {
@@ -55,11 +66,23 @@ class ProfileViewModel : ViewModel() {
      * Получает информацию по пользователю
      */
     private fun getUserData() {
-        // TODO repository method execution
-        uiState.value = uiState.value.copy(
-            fullName = "Мартынов Д.O.",
-            imageUrl = "https://engineering.unl.edu/images/staff/Kayla-Person.jpg",
-            email = "denis.martynov.93@mail.ru"
-        )
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = getUserUseCase()
+
+            withContext(Dispatchers.IO) {
+                when (result) {
+                    is Result.Success -> {
+                        uiState.value = uiState.value.copy(
+                            fullName = result.value.name,
+                            imageUrl = result.value.avatarUrl,
+                            email = result.value.email,
+                        )
+                    }
+                    is Result.Failure -> {
+                        // todo show notification
+                    }
+                }
+            }
+        }
     }
 }

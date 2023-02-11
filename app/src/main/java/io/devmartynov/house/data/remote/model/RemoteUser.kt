@@ -6,13 +6,17 @@ package io.devmartynov.house.data.remote.model
  * @param id уникальный id
  * @param email адрес эл. почты, он же логин
  * @param isBanned забанен ли пользователь
- * @param name имя пользователя
+ * @param firstName имя пользователя
  * @param role роль пользователя в приложении
+ * @param phone номер телефона пользователя
+ * @param createTime время создания пользователя
  */
 data class RemoteUser(
     val id: Int,
-    val email: Int,
-    val isBanned: Boolean,
-    val name: String,
-    val role: String
+    val email: String,
+    val phone: String?,
+    val isBanned: Int,
+    val firstName: String,
+    val role: String,
+    val createTime: String,
 )

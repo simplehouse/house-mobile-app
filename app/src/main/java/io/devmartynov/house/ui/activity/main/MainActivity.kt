@@ -8,23 +8,17 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import dagger.hilt.android.AndroidEntryPoint
-import io.devmartynov.house.domain.model.Auth
 import io.devmartynov.house.ui.HouseApp
 import io.devmartynov.house.ui.activity.main.model.MainState
 import io.devmartynov.house.ui.app.model.rememberAppState
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var uiState: MainState
 
-    @Inject
-    lateinit var auth: Auth
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainViewModel.addAuthStateListener(auth)
 
         setContent {
             uiState = mainViewModel.uiState.collectAsState().value
