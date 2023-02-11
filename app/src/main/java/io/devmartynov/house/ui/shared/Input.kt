@@ -22,6 +22,7 @@ fun Input(
     singleLine: Boolean = true,
     value: String = "",
     isError: Boolean = false,
+    enabled: Boolean = true,
     onValueChange: (value: String) -> Unit = {},
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -36,6 +37,7 @@ fun Input(
             color = if (isError) Red else Color.Transparent,
             shape = Shapes.medium
         ),
+        enabled = enabled,
         singleLine = singleLine,
         value = value,
         onValueChange = onValueChange,

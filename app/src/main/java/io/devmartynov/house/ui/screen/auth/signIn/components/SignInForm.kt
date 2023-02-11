@@ -44,6 +44,7 @@ fun SignInForm(
         Column {
             EmailInput(
                 modifier = Modifier.fillMaxWidth(),
+                enabled = !isLoading,
                 email = email ?: "",
                 onEmailChanged = onEmailChanged,
                 onNextClicked = {
@@ -55,6 +56,7 @@ fun SignInForm(
                 modifier = Modifier
                     .fillMaxWidth()
                     .focusRequester(passwordFocusRequester),
+                enabled = !isLoading,
                 password = password ?: "",
                 onPasswordChanged = onPasswordChanged,
                 onDoneClicked = {

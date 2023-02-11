@@ -20,6 +20,7 @@ import io.devmartynov.house.ui.theme.Blue
 fun PasswordInput(
     modifier: Modifier = Modifier,
     password: String?,
+    enabled: Boolean = true,
     onPasswordChanged: (password: String) -> Unit,
     onDoneClicked: () -> Unit,
 ) {
@@ -36,6 +37,7 @@ fun PasswordInput(
         label = {
             Text(text = stringResource(id = R.string.label_password))
         },
+        enabled = enabled,
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Lock,

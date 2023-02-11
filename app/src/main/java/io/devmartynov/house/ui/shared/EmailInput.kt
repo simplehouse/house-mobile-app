@@ -16,12 +16,14 @@ import io.devmartynov.house.R
 fun EmailInput(
     modifier: Modifier = Modifier,
     email: String?,
+    enabled: Boolean = true,
     onEmailChanged: (email: String) -> Unit,
     onNextClicked: () -> Unit,
 ) {
     Input(
         modifier = modifier,
         value = email ?: "",
+        enabled = enabled,
         onValueChange = onEmailChanged,
         label = {
             Text(text = stringResource(id = R.string.label_email))
