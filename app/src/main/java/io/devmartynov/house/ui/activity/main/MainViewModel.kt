@@ -29,29 +29,49 @@ class MainViewModel @Inject constructor(
             is MainEvent.ThemeChanged -> {
                 changeTheme(event.theme)
             }
-            is MainEvent.AuthorizationChanged -> {
-            }
         }
     }
 
+    /**
+     * Добавляет колбэк на изменения состояния авторизации пользователя.
+     *
+     * @param auth компонент авторизации приложения
+     */
     fun addAuthStateListener(auth: Auth) {
+        auth.removeAllChangeListeners()
         auth.addChangeListener(object : AuthStateListener {
             override fun onAuthChanged(isAuthorized: Boolean) {
-                changeAuthorization(isAuthorized = isAuthorized)
+                updateIsAuthorized(isAuthorized = isAuthorized)
             }
         })
     }
 
+    /**
+     * Является ли цветовая тема темной?
+     *
+     * @param theme цветовая тема
+     * @return true если да, иначе false
+     */
     fun isDark(theme: Theme): Boolean? {
         return themeUseCase.isDark(theme)
     }
 
+    /**
+     * Изменяет текущую цветовую тему
+     *
+     * @param theme новая цветовая тема
+     */
     private fun changeTheme(theme: Theme) {
         themeUseCase.setTheme(theme)
         uiState.value = uiState.value.copy(theme = theme)
     }
 
-    private fun changeAuthorization(isAuthorized: Boolean) {
+    /**
+     * Обновляет состояние авторизации
+     *
+     * @param isAuthorized авторизован пользователь или нет
+     */
+    private fun updateIsAuthorized(isAuthorized: Boolean) {
         uiState.value = uiState.value.copy(isAuthorized = isAuthorized)
     }
 }

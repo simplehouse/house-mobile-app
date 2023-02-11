@@ -2,7 +2,14 @@ package io.devmartynov.house.ui.activity.main.model
 
 import io.devmartynov.house.ui.shared.model.Theme
 
+/**
+ * События в активити(глобальные)
+ */
 sealed class MainEvent {
+    /**
+     * Событие изменения цветовой темы в приложении
+     *
+     * @property theme новая цветовая тема
+     */
     class ThemeChanged(val theme: Theme) : MainEvent()
-    class AuthorizationChanged(val isAuthorized: Boolean) : MainEvent()
 }

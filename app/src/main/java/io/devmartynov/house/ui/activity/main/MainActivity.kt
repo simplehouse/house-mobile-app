@@ -24,8 +24,9 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mainViewModel.addAuthStateListener(auth)
+
         setContent {
-            mainViewModel.addAuthStateListener(auth)
             uiState = mainViewModel.uiState.collectAsState().value
             val appState = rememberAppState();
             val isDark = mainViewModel.isDark(uiState.theme) ?: isSystemInDarkTheme()

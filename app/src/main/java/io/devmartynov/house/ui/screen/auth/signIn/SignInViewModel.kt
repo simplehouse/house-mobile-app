@@ -9,11 +9,11 @@ import io.devmartynov.house.ui.screen.auth.signIn.model.SignInEvent
 import io.devmartynov.house.ui.screen.auth.signIn.model.SignInState
 import io.devmartynov.house.ui.shared.model.ActionStatus
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import io.devmartynov.house.domain.model.Result
 
 private const val MIN_PASSWORD_LENGTH = 8
 
@@ -60,16 +60,25 @@ class SignInViewModel @Inject constructor(
     private fun signIn() {
         uiState.value = uiState.value.copy(status = ActionStatus.Loading)
         viewModelScope.launch(Dispatchers.IO) {
-            signInUseCase()
-            delay(2000L)
-
+            val result = signInUseCase(
+                email = uiState.value.email ?: "",
+                password = uiState.value.password ?: "",
+            )
             withContext(Dispatchers.Main) {
-//                uiState.value = uiState.value.copy(
-//                    status = ActionStatus.Error("Что-то пошло не так!")
-//                )
-                uiState.value = uiState.value.copy(
-                    status = ActionStatus.Success
-                )
+                when (result) {
+                    is Result.Success -> {
+                        uiState.value = uiState.value.copy(
+                            status = ActionStatus.Success,
+                            email = null,
+                            password = null,
+                        )
+                    }
+                    is Result.Failure -> {
+                        uiState.value = uiState.value.copy(
+                            status = ActionStatus.Error(result.errors)
+                        )
+                    }
+                }
             }
         }
     }

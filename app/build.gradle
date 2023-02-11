@@ -23,9 +23,16 @@ android {
     }
 
     buildTypes {
+        def apiUrlKey = "APP_BACKEND_URL"
+        def apiUrl = '"http://localhost:8080/api/v1/"'
+
         release {
+            buildConfigField 'String', apiUrlKey, apiUrl
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField 'String', apiUrlKey, apiUrl
         }
     }
     compileOptions {
@@ -76,6 +83,10 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
     implementation "androidx.hilt:hilt-navigation-compose:$hilt_compose_nav_version"
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_converter_gson_version"
 
     // tests
     testImplementation "junit:junit:$junit_version"
