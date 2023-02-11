@@ -45,7 +45,7 @@ fun Button(
         if (isLoading) {
             CircularProgressIndicator(
                 modifier = Modifier
-                    .size(26.dp, 26.dp),
+                    .size(22.dp, 22.dp),
                 color = White,
                 strokeWidth = 4.dp,
             )
