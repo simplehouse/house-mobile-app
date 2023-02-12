@@ -1,6 +1,6 @@
 package io.devmartynov.house.domain.repositories
 
-import io.devmartynov.house.domain.model.Result
+import io.devmartynov.house.app.model.Result
 import io.devmartynov.house.domain.model.SignInResponse
 import io.devmartynov.house.domain.model.User
 

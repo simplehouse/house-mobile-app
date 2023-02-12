@@ -1,4 +1,4 @@
-package io.devmartynov.house.ui.shared.model
+package io.devmartynov.house.app
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -9,7 +9,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
-import io.devmartynov.house.AppConfig
+import io.devmartynov.house.app.AppConfig
+import io.devmartynov.house.app.model.Theme
+import io.devmartynov.house.app.model.ThemeManager
 
 class ThemeManagerImpl @Inject constructor(
     @ApplicationContext private val context: Context,

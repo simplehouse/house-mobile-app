@@ -5,7 +5,8 @@ import io.devmartynov.house.data.remote.mappers.toDomainModel
 import io.devmartynov.house.domain.model.MeterReading
 import io.devmartynov.house.domain.model.Service
 import io.devmartynov.house.domain.repositories.MeterReadingsRepository
-import io.devmartynov.house.domain.model.Result
+import io.devmartynov.house.app.model.Result
+import java.io.IOException
 import javax.inject.Inject
 
 class MeterReadingsRepositoryImpl @Inject constructor(
@@ -47,6 +48,24 @@ class MeterReadingsRepositoryImpl @Inject constructor(
                 }"
             )
         } catch (e: Exception) {
+            return Result.Failure(e.message.toString())
+        }
+    }
+
+    override suspend fun getNextSubmissionDate(): Result<String> {
+        try {
+            val response = meterReadingApi.getNextSubmissionDate()
+
+            if (response.isSuccessful) {
+                if (response.body() == null) {
+                    return Result.Failure(response.errorBody().toString())
+                }
+                return Result.Success(response.body()!!.toDomainModel())
+            }
+            return Result.Failure(
+                "Error while getting next submission date: ${response.errorBody().toString()}"
+            )
+        } catch (e: IOException) {
             return Result.Failure(e.message.toString())
         }
     }

@@ -1,5 +1,6 @@
-package io.devmartynov.house.ui.shared.model
+package io.devmartynov.house.app.model
 
+import io.devmartynov.house.app.model.Theme
 import kotlinx.coroutines.flow.StateFlow
 
 interface ThemeManager {

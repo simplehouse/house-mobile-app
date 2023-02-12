@@ -19,7 +19,7 @@ import androidx.compose.ui.zIndex
 import io.devmartynov.house.ui.screen.profile.model.ProfileEvent
 import io.devmartynov.house.ui.screen.profile.model.ProfileState
 import io.devmartynov.house.R
-import io.devmartynov.house.ui.shared.model.Theme
+import io.devmartynov.house.app.model.Theme
 
 @Composable
 fun ProfileContent(
@@ -59,7 +59,7 @@ fun ProfileContent(
             modifier = Modifier.fillMaxWidth(),
             fullName = profileState.fullName ?: "",
             email = profileState.email ?: "",
-            imageUrl = profileState.imageUrl ?: ""
+            imageUrl = profileState.imageUrl
         )
         Spacer(modifier = Modifier.height(70.dp))
         ProfileSection(

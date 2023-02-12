@@ -1,4 +1,4 @@
-package io.devmartynov.house.domain.model
+package io.devmartynov.house.app.model
 
 /**
  * Результат выполнения действия

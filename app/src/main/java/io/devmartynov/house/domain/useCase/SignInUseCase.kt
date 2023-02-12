@@ -1,9 +1,9 @@
 package io.devmartynov.house.domain.useCase
 
-import io.devmartynov.house.domain.model.Auth
+import io.devmartynov.house.app.model.Auth
 import io.devmartynov.house.domain.repositories.AuthRepository
 import javax.inject.Inject
-import io.devmartynov.house.domain.model.Result
+import io.devmartynov.house.app.model.Result
 import io.devmartynov.house.domain.model.SignInResponse
 import io.devmartynov.house.domain.repositories.AuthStore
 

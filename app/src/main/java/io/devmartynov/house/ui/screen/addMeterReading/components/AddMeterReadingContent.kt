@@ -20,11 +20,10 @@ import io.devmartynov.house.R
 import io.devmartynov.house.ui.screen.addMeterReading.model.AddMeterReadingEvent
 import io.devmartynov.house.ui.screen.addMeterReading.model.AddMeterReadingState
 import io.devmartynov.house.ui.screen.addMeterReading.model.METER_READING_VALUE_MIN_LENGTH
-import io.devmartynov.house.ui.screen.auth.signIn.model.SignInEvent
 import io.devmartynov.house.ui.shared.Button
 import io.devmartynov.house.ui.shared.ErrorDialog
 import io.devmartynov.house.ui.shared.OtpTextInput
-import io.devmartynov.house.ui.shared.model.ActionStatus
+import io.devmartynov.house.app.model.ActionStatus
 import io.devmartynov.house.ui.theme.*
 
 @Composable

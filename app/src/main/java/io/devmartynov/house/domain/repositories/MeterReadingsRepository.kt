@@ -2,7 +2,7 @@ package io.devmartynov.house.domain.repositories
 
 import io.devmartynov.house.domain.model.MeterReading
 import io.devmartynov.house.domain.model.Service
-import io.devmartynov.house.domain.model.Result
+import io.devmartynov.house.app.model.Result
 
 /**
  * Репозиторий показаний счетчиков
@@ -22,4 +22,9 @@ interface MeterReadingsRepository {
      * @param service коммунальная услуга
      */
     suspend fun save(value: Int, service: Service): Result<MeterReading>
+
+    /**
+     * Следующая дата подачи показаний счетчика
+     */
+    suspend fun getNextSubmissionDate(): Result<String>
 }

@@ -5,7 +5,7 @@ package io.devmartynov.house.domain.model
  *
  * @param id уникальный ключ показания
  * @param createDate дата подачи показания
- * @param isExpired
+ * @param isExpired просрочена ли дата подачи показания
  * @param toPayAmount сумма, которую нужно заплатить
  * @param service коммунальная услуга
  * @param diffWithPrevValue разница по значению с прошлым месяцем

@@ -15,6 +15,7 @@ fun MeterReadingsPage(
 ) {
     val viewModel: MeterReadingsPageViewModel = hiltViewModel(key = service.ordinal.toString())
     val uiState = viewModel.uiState.collectAsState().value
+    viewModel.service = service
 
     MeterReadingsList(
         modifier = modifier,

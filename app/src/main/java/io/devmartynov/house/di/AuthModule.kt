@@ -4,8 +4,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import io.devmartynov.house.AuthImpl
-import io.devmartynov.house.domain.model.Auth
+import io.devmartynov.house.app.AuthImpl
+import io.devmartynov.house.app.model.Auth
 import io.devmartynov.house.domain.repositories.AuthStore
 import javax.inject.Singleton
 

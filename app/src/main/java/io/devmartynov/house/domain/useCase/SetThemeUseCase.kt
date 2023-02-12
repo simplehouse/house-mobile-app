@@ -1,7 +1,7 @@
 package io.devmartynov.house.domain.useCase
 
-import io.devmartynov.house.ui.shared.model.Theme
-import io.devmartynov.house.ui.shared.model.ThemeManager
+import io.devmartynov.house.app.model.Theme
+import io.devmartynov.house.app.model.ThemeManager
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 

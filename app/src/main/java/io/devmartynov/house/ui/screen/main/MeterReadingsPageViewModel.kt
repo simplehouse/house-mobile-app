@@ -3,14 +3,13 @@ package io.devmartynov.house.ui.screen.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.devmartynov.house.domain.model.MeterReading
+import io.devmartynov.house.app.model.Result
 import io.devmartynov.house.domain.model.Service
-import io.devmartynov.house.domain.useCase.LoadMeterReadingsUseCase
+import io.devmartynov.house.domain.useCase.GetMeterReadingsUseCase
 import io.devmartynov.house.ui.screen.main.model.MeterReadingsPageEvent
 import io.devmartynov.house.ui.screen.main.model.MeterReadingsPageState
-import io.devmartynov.house.ui.shared.model.ActionStatus
+import io.devmartynov.house.app.model.ActionStatus
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -21,8 +20,9 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class MeterReadingsPageViewModel @Inject constructor(
-    private val loadMeterReadingsUseCase: LoadMeterReadingsUseCase,
+    private val getMeterReadingsUseCase: GetMeterReadingsUseCase,
 ) : ViewModel() {
+    var service: Service? = null
     val uiState = MutableStateFlow(MeterReadingsPageState())
 
     init {
@@ -56,138 +56,21 @@ class MeterReadingsPageViewModel @Inject constructor(
         )
 
         viewModelScope.launch(Dispatchers.IO) {
-            loadMeterReadingsUseCase(Service.GAS)
-            delay(2000L)
+            val result = getMeterReadingsUseCase(Service.GAS)
 
             withContext(Dispatchers.Main) {
-                uiState.value = uiState.value.copy(
-                    status = ActionStatus.Success,
-                    meterReadings = metaReadings
-                )
+                when (result) {
+                    is Result.Success -> {
+                        uiState.value = uiState.value.copy(
+                            status = ActionStatus.Success,
+                            meterReadings = result.value,
+                        )
+                    }
+                    is Result.Failure -> {
+                        // todo show notification
+                    }
+                }
             }
         }
     }
 }
-
-val metaReadings = listOf(
-    MeterReading(
-        id = 1,
-        createDate = "11.12.12",
-        isExpired = false,
-        toPayAmount = 133,
-        service = Service.GAS,
-        diffWithPrevValue = 0.3f,
-        value = 00033312f,
-        usageAmount = 0.3f,
-    ),
-    MeterReading(
-        id = 2,
-        createDate = "11.12.12",
-        isExpired = false,
-        toPayAmount = 133,
-        service = Service.GAS,
-        diffWithPrevValue = 0.3f,
-        value = 00033312f,
-        usageAmount = 0.3f,
-    ),
-    MeterReading(
-        id = 3,
-        createDate = "11.12.12",
-        isExpired = false,
-        toPayAmount = 133,
-        service = Service.GAS,
-        diffWithPrevValue = 0.3f,
-        value = 00033312f,
-        usageAmount = 0.3f,
-    ),
-    MeterReading(
-        id = 4,
-        createDate = "11.12.12",
-        isExpired = false,
-        toPayAmount = 133,
-        service = Service.GAS,
-        diffWithPrevValue = 0.3f,
-        value = 00033312f,
-        usageAmount = 0.3f,
-    ),
-    MeterReading(
-        id = 5,
-        createDate = "11.12.12",
-        isExpired = false,
-        toPayAmount = 133,
-        service = Service.GAS,
-        diffWithPrevValue = 0.3f,
-        value = 00033312f,
-        usageAmount = 0.3f,
-    ),
-    MeterReading(
-        id = 6,
-        createDate = "11.12.12",
-        isExpired = false,
-        toPayAmount = 133,
-        service = Service.GAS,
-        diffWithPrevValue = 0.3f,
-        value = 00033312f,
-        usageAmount = 0.3f,
-    ),
-    MeterReading(
-        id = 7,
-        createDate = "11.12.12",
-        isExpired = false,
-        toPayAmount = 133,
-        service = Service.GAS,
-        diffWithPrevValue = 0.3f,
-        value = 00033312f,
-        usageAmount = 0.3f,
-    ),
-    MeterReading(
-        id = 8,
-        createDate = "11.12.12",
-        isExpired = false,
-        toPayAmount = 133,
-        service = Service.GAS,
-        diffWithPrevValue = 0.3f,
-        value = 00033312f,
-        usageAmount = 0.3f,
-    ),
-    MeterReading(
-        id = 9,
-        createDate = "11.12.12",
-        isExpired = false,
-        toPayAmount = 133,
-        service = Service.GAS,
-        diffWithPrevValue = 0.3f,
-        value = 00033312f,
-        usageAmount = 0.3f,
-    ),
-    MeterReading(
-        id = 10,
-        createDate = "11.12.12",
-        isExpired = false,
-        toPayAmount = 133,
-        service = Service.GAS,
-        diffWithPrevValue = 0.3f,
-        value = 00033312f,
-        usageAmount = 0.3f,
-    ),
-    MeterReading(
-        id = 11,
-        createDate = "11.12.12",
-        isExpired = false,
-        toPayAmount = 133,
-        service = Service.GAS,
-        diffWithPrevValue = 0.3f,
-        value = 00033312f,
-        usageAmount = 0.3f,
-    ),
-    MeterReading(
-        id = 12,
-        createDate = "11.12.12",
-        isExpired = false,
-        toPayAmount = 133,
-        service = Service.GAS,
-        diffWithPrevValue = 0.3f,
-        value = 00033312f,
-        usageAmount = 0.3f,
-    ),
-)

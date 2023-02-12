@@ -1,6 +1,6 @@
 package io.devmartynov.house.ui.screen.main.model
 
-import io.devmartynov.house.ui.shared.model.ActionStatus
+import io.devmartynov.house.app.model.ActionStatus
 
 /**
  * Состояние на главном экране

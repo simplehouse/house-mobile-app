@@ -1,7 +1,7 @@
 package io.devmartynov.house.ui.screen.main.model
 
 import io.devmartynov.house.domain.model.MeterReading
-import io.devmartynov.house.ui.shared.model.ActionStatus
+import io.devmartynov.house.app.model.ActionStatus
 
 /**
  * Состояние страницы списка показаний счетчика(страница в HorizontalPager)

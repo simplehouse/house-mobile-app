@@ -1,7 +1,7 @@
 package io.devmartynov.house.domain.useCase
 
 import javax.inject.Inject
-import io.devmartynov.house.domain.model.Result
+import io.devmartynov.house.app.model.Result
 import io.devmartynov.house.domain.model.User
 import io.devmartynov.house.domain.repositories.AuthRepository
 import io.devmartynov.house.domain.repositories.UserStore

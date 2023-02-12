@@ -8,7 +8,7 @@ import androidx.compose.ui.unit.dp
 import io.devmartynov.house.ui.screen.auth.signIn.model.SignInEvent
 import io.devmartynov.house.ui.screen.auth.signIn.model.SignInState
 import io.devmartynov.house.ui.shared.ErrorDialog
-import io.devmartynov.house.ui.shared.model.ActionStatus
+import io.devmartynov.house.app.model.ActionStatus
 
 @Composable
 fun SignInContent(

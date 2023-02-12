@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import dagger.hilt.android.qualifiers.ApplicationContext
-import io.devmartynov.house.AppConfig
+import io.devmartynov.house.app.AppConfig
 import io.devmartynov.house.domain.model.User
 import io.devmartynov.house.domain.repositories.UserStore
 import javax.inject.Inject

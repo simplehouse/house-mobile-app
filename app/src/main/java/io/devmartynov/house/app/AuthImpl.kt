@@ -1,6 +1,6 @@
-package io.devmartynov.house
+package io.devmartynov.house.app
 
-import io.devmartynov.house.domain.model.Auth
+import io.devmartynov.house.app.model.Auth
 import io.devmartynov.house.domain.repositories.AuthStore
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject

@@ -2,7 +2,7 @@ package io.devmartynov.house.data.remote.repository
 
 import io.devmartynov.house.data.remote.AuthApi
 import io.devmartynov.house.data.remote.mappers.toDomainModel
-import io.devmartynov.house.domain.model.Result
+import io.devmartynov.house.app.model.Result
 import io.devmartynov.house.domain.model.SignInResponse
 import io.devmartynov.house.domain.repositories.AuthRepository
 import javax.inject.Inject

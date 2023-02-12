@@ -1,7 +1,7 @@
 package io.devmartynov.house.ui.screen.auth.signIn.model
 
 import io.devmartynov.house.ui.screen.auth.model.PasswordRequirements
-import io.devmartynov.house.ui.shared.model.ActionStatus
+import io.devmartynov.house.app.model.ActionStatus
 
 /**
  * Состояние экрана авторизации

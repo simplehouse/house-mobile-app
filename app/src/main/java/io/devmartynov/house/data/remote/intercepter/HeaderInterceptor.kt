@@ -1,6 +1,6 @@
 package io.devmartynov.house.data.remote.intercepter
 
-import io.devmartynov.house.domain.model.Auth
+import io.devmartynov.house.app.model.Auth
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response

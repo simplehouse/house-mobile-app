@@ -1,4 +1,4 @@
-package io.devmartynov.house
+package io.devmartynov.house.app
 
 /**
  * Константы приложения

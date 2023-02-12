@@ -1,8 +1,8 @@
 package io.devmartynov.house.ui.activity.main.model
 
 import io.devmartynov.house.domain.model.User
-import io.devmartynov.house.ui.shared.model.ActionStatus
-import io.devmartynov.house.ui.shared.model.Theme
+import io.devmartynov.house.app.model.ActionStatus
+import io.devmartynov.house.app.model.Theme
 
 /**
  * Состояние на активити(глобальное состояние)

@@ -1,6 +1,6 @@
 package io.devmartynov.house.ui.screen.addMeterReading.model
 
-import io.devmartynov.house.ui.shared.model.ActionStatus
+import io.devmartynov.house.app.model.ActionStatus
 
 const val METER_READING_VALUE_MIN_LENGTH = 8
 

@@ -1,4 +1,4 @@
-package io.devmartynov.house.ui.shared.model
+package io.devmartynov.house.app.model
 
 /**
  * Статус асинхроннгого действия

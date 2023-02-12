@@ -6,12 +6,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.devmartynov.house.domain.useCase.GetUserUseCase
 import io.devmartynov.house.ui.screen.profile.model.ProfileEvent
 import io.devmartynov.house.ui.screen.profile.model.ProfileState
-import io.devmartynov.house.ui.shared.model.Theme
+import io.devmartynov.house.app.model.Theme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import io.devmartynov.house.domain.model.Result
+import io.devmartynov.house.app.model.Result
 import io.devmartynov.house.domain.useCase.SignOutUseCase
 import kotlinx.coroutines.withContext
 

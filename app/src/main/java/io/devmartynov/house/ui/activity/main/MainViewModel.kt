@@ -3,20 +3,20 @@ package io.devmartynov.house.ui.activity.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.devmartynov.house.domain.model.Auth
-import io.devmartynov.house.domain.model.AuthStateListener
+import io.devmartynov.house.app.model.Auth
+import io.devmartynov.house.app.model.AuthStateListener
 import io.devmartynov.house.domain.useCase.GetUserUseCase
 import io.devmartynov.house.domain.useCase.SetThemeUseCase
 import io.devmartynov.house.ui.activity.main.model.MainEvent
 import io.devmartynov.house.ui.activity.main.model.MainState
-import io.devmartynov.house.ui.shared.model.ActionStatus
-import io.devmartynov.house.ui.shared.model.Theme
+import io.devmartynov.house.app.model.ActionStatus
+import io.devmartynov.house.app.model.Theme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import io.devmartynov.house.domain.model.Result
+import io.devmartynov.house.app.model.Result
 
 /**
  * Вью модель активити(в приложении только одна активити)

@@ -7,13 +7,13 @@ import io.devmartynov.house.domain.useCase.SignInUseCase
 import io.devmartynov.house.ui.screen.auth.model.PasswordRequirements
 import io.devmartynov.house.ui.screen.auth.signIn.model.SignInEvent
 import io.devmartynov.house.ui.screen.auth.signIn.model.SignInState
-import io.devmartynov.house.ui.shared.model.ActionStatus
+import io.devmartynov.house.app.model.ActionStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import io.devmartynov.house.domain.model.Result
+import io.devmartynov.house.app.model.Result
 
 private const val MIN_PASSWORD_LENGTH = 8
 

@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import io.devmartynov.house.AppConfig
+import io.devmartynov.house.app.AppConfig
 import io.devmartynov.house.data.local.AuthStoreImpl
 import io.devmartynov.house.data.local.UserStoreImpl
 import io.devmartynov.house.data.remote.*

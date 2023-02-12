@@ -3,23 +3,25 @@ package io.devmartynov.house.ui.screen.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.devmartynov.house.domain.useCase.LoadServicesDatesUseCase
+import io.devmartynov.house.domain.useCase.GetMeterReadingDateUseCase
 import io.devmartynov.house.ui.screen.main.model.MainScreenEvent
 import io.devmartynov.house.ui.screen.main.model.MainScreenState
-import io.devmartynov.house.ui.shared.model.ActionStatus
+import io.devmartynov.house.app.model.ActionStatus
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import io.devmartynov.house.app.model.Result
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Вью модель главного экрана
  */
 @HiltViewModel
 class MainScreenViewModel @Inject constructor(
-    private val loadServicesDatesUseCase: LoadServicesDatesUseCase,
+    private val getMeterReadingDateUseCase: GetMeterReadingDateUseCase,
 ) : ViewModel() {
     val uiState = MutableStateFlow(MainScreenState())
 
@@ -54,16 +56,26 @@ class MainScreenViewModel @Inject constructor(
         )
 
         viewModelScope.launch(Dispatchers.IO) {
-            loadServicesDatesUseCase()
-            delay(2000L)
+            val result = getMeterReadingDateUseCase()
 
             withContext(Dispatchers.Main) {
-                uiState.value = uiState.value.copy(
-                    status = ActionStatus.Success,
-                    gasDate = "11.11.11",
-                    waterDate = "12.12.12",
-                    electricityDate = "13.10.13"
-                )
+                when (result) {
+                    is Result.Success -> {
+                        val date1 = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.UK)
+                            .parse(result.value)
+                        val date = SimpleDateFormat("dd.MM.yyyy").format(date1)
+
+                        uiState.value = uiState.value.copy(
+                            status = ActionStatus.Success,
+                            gasDate = date,
+                            waterDate = date,
+                            electricityDate = date
+                        )
+                    }
+                    is Result.Failure -> {
+                        // todo show notification
+                    }
+                }
             }
         }
     }
