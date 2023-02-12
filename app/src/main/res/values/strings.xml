@@ -26,6 +26,7 @@
     <string name="cd_go_back">Перейти на предыдущий экран</string>
     <string name="cd_change_password">Изменить пароль</string>
     <string name="cd_delete_profile">Удалить профиль</string>
+    <string name="cd_sign_out">Выйти</string>
     <string name="label_statistics">Статистика</string>
 
     <!-- Main   -->

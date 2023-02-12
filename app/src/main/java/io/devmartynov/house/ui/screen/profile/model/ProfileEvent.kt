@@ -19,4 +19,9 @@ sealed class ProfileEvent {
      * Событие удаления профиля пользователя
      */
     object ProfileDeleted : ProfileEvent()
+
+    /**
+     * Выход из аккаунта пользователя
+     */
+    object SignOut : ProfileEvent()
 }

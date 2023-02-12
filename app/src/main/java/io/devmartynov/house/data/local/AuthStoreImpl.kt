@@ -19,7 +19,7 @@ class AuthStoreImpl @Inject constructor(
             Context.MODE_PRIVATE
         )
 
-    override fun setAccessToken(accessToken: String) {
+    override fun setAccessToken(accessToken: String?) {
         preferences.edit {
             putString(appConfig.SETTINGS_PREFERENCES_ACCESS_TOKEN_KEY, accessToken)
         }

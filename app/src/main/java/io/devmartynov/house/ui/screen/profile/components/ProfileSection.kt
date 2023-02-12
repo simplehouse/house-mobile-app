@@ -25,6 +25,7 @@ fun ProfileSection(
     onNavigateChangePassword: () -> Unit = {},
     onChangeTheme: (theme: Theme) -> Unit = {},
     onDeleteProfile: () -> Unit = {},
+    onSignOut: () -> Unit = {},
 ) {
     Column(
         modifier = modifier,
@@ -65,10 +66,10 @@ fun ProfileSection(
             endIndent = 30.dp,
         )
         ProfileOption(
-            label = stringResource(id = R.string.cd_delete_profile),
-            leadingIcon = Icons.Default.Person,
+            label = stringResource(id = R.string.cd_sign_out),
+            leadingIcon = Icons.Default.Logout,
             iconColor = Red,
-            onClick = onDeleteProfile
+            onClick = onSignOut
         )
         Divider(
             startIndent = 30.dp,

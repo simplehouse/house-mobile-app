@@ -10,7 +10,7 @@ interface AuthStore {
      *
      * @param accessToken токен доступа
      */
-    fun setAccessToken(accessToken: String)
+    fun setAccessToken(accessToken: String?)
 
     /**
      * Получает токен доступа

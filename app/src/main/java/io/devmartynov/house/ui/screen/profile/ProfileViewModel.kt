@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import io.devmartynov.house.domain.model.Result
+import io.devmartynov.house.domain.useCase.SignOutUseCase
 import kotlinx.coroutines.withContext
 
 /**
@@ -20,6 +21,7 @@ import kotlinx.coroutines.withContext
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val getUserUseCase: GetUserUseCase,
+    private val signOutUseCase: SignOutUseCase,
 ) : ViewModel() {
     val uiState = MutableStateFlow(ProfileState())
 
@@ -36,6 +38,9 @@ class ProfileViewModel @Inject constructor(
         when (event) {
             is ProfileEvent.ThemeChanged -> {
                 setTheme(event.theme)
+            }
+            is ProfileEvent.SignOut -> {
+                signOutUseCase()
             }
             ProfileEvent.ProfileDeleted -> {
                 deleteProfile()

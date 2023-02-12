@@ -73,6 +73,9 @@ fun ProfileContent(
             onDeleteProfile = {
                 handleEvent(ProfileEvent.ProfileDeleted)
             },
+            onSignOut = {
+                handleEvent(ProfileEvent.SignOut)
+            }
         )
     }
 }
