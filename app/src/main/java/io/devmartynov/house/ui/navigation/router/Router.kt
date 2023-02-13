@@ -5,7 +5,7 @@ interface Router {
 
     fun navigateToSignIn()
 
-    fun navigateToMetersReading()
+    fun navigateToMeterReadings()
 
     fun navigateToStatistics()
 

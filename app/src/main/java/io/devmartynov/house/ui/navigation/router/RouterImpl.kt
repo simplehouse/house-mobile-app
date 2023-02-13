@@ -14,7 +14,7 @@ class RouterImpl(
         navController.navigate(Route.SignIn.id)
     }
 
-    override fun navigateToMetersReading() {
+    override fun navigateToMeterReadings() {
         navController.navigate(Route.MeterReadings.id)
     }
 

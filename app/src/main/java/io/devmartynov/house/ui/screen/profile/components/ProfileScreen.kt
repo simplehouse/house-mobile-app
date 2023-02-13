@@ -28,7 +28,7 @@ fun ProfileScreen(
             router.navigateToPasswordRecovery()
         },
         navigateToMetersReading = {
-            router.navigateToMetersReading()
+            router.navigateToMeterReadings()
         },
     )
 }

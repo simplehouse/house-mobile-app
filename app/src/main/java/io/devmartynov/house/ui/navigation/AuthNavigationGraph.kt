@@ -23,7 +23,7 @@ fun NavGraphBuilder.authGraph(router: Router) {
             SignInScreen(
                 uiState = signInState,
                 handleEvent = viewModel::handleEvent,
-                handleSignInSuccess = router::navigateToMetersReading
+                handleSignInSuccess = router::navigateToMeterReadings
             )
         }
     }
