@@ -40,6 +40,11 @@
     <string name="cd_look_meter_reading_detail_info">Посмотреть детальную информацию показания счетчика</string>
     <string name="label_last_meter_readings">Последние показания</string>
     <string name="label_no_meter_readings">Пока нет показаний</string>
+    <string name="label_submission_date_expired">Дата внесения показания просрочена</string>
+    <string name="label_submit_meter_reading_until">Внести показания счетчика до</string>
+    <string name="label_submit_meter_reading_days_count">Чтобы внести показания осталось</string>
+    <string name="label_submit_meter_reading">Внести показания!</string>
+    <string name="label_wait_for_submit">Ближе к дате внесения появится кнопка</string>
 
     <!-- Add meter reading   -->
     <string name="label_add_meter_reading">Добавление показания</string>

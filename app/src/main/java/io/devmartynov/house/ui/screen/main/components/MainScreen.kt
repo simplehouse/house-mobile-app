@@ -3,6 +3,7 @@ package io.devmartynov.house.ui.screen.main.components
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import io.devmartynov.house.domain.model.Service
 import io.devmartynov.house.ui.navigation.router.Router
 import io.devmartynov.house.ui.screen.main.model.MainScreenEvent
 import io.devmartynov.house.ui.screen.main.model.MainScreenState
@@ -12,6 +13,8 @@ fun MainScreen(
     router: Router,
     uiState: MainScreenState = MainScreenState(),
     handleEvent: (event: MainScreenEvent) -> Unit = {},
+    getDaysUntilExpirationSubmissionDate: (service: Service) -> Int = {0},
+    isSubmissionDateExpired: (service: Service) -> Boolean = {false},
 ) {
     MainScreenContent(
         modifier = Modifier.fillMaxSize(),
@@ -25,6 +28,8 @@ fun MainScreen(
         },
         navigateToMeterReading = { meterReadingId: Int ->
             router.navigateToMeterReading(meterReadingId)
-        }
+        },
+        getDaysUntilExpirationSubmissionDate  = getDaysUntilExpirationSubmissionDate,
+        isSubmissionDateExpired = isSubmissionDateExpired,
     )
 }

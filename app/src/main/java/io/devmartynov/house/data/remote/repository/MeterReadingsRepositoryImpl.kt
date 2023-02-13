@@ -6,6 +6,7 @@ import io.devmartynov.house.domain.model.MeterReading
 import io.devmartynov.house.domain.model.Service
 import io.devmartynov.house.domain.repositories.MeterReadingsRepository
 import io.devmartynov.house.app.model.Result
+import io.devmartynov.house.domain.model.SubmissionDate
 import java.io.IOException
 import javax.inject.Inject
 
@@ -52,7 +53,7 @@ class MeterReadingsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getNextSubmissionDate(): Result<String> {
+    override suspend fun getNextSubmissionDate(): Result<SubmissionDate> {
         try {
             val response = meterReadingApi.getNextSubmissionDate()
 

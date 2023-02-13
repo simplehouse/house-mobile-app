@@ -22,6 +22,7 @@ import androidx.compose.ui.zIndex
 import com.google.accompanist.pager.*
 import io.devmartynov.house.R
 import io.devmartynov.house.domain.model.Service
+import io.devmartynov.house.domain.model.SubmissionDate
 import io.devmartynov.house.ui.screen.main.model.MainScreenEvent
 import io.devmartynov.house.ui.screen.main.model.MainScreenState
 import io.devmartynov.house.ui.shared.gradientBackground
@@ -38,14 +39,26 @@ fun MainScreenContent(
     navigateToProfile: () -> Unit,
     navigateToAddMeterReading: (service: Int) -> Unit,
     navigateToMeterReading: (meterReadingId: Int) -> Unit,
+    getDaysUntilExpirationSubmissionDate: (service: Service) -> Int,
+    isSubmissionDateExpired: (service: Service) -> Boolean,
 ) {
+    val pageCount = Service.values().size
+    val pagerState = rememberPagerState(initialPage = 0)
+    val service = Service.values()[pagerState.currentPage]
+    val isDateExpired = isSubmissionDateExpired(service)
+    val daysUntilDateExpiration = getDaysUntilExpirationSubmissionDate(service)
+
+    val gradientColors = if (isDateExpired || daysUntilDateExpiration < 2) {
+        listOf(LightRed, Red)
+    } else {
+        listOf(LightBlue, Blue)
+    }
+
     BoxWithConstraints(
         modifier = modifier
-            .gradientBackground(listOf(LightBlue, Blue), angle = 125f)
+            .gradientBackground(gradientColors, angle = 125f)
     ) {
         val screenHeight = maxHeight
-        val pageCount = Service.values().size
-        val pagerState = rememberPagerState(initialPage = 0)
 
         TopAppBar(
             modifier = Modifier.zIndex(1f),
@@ -107,15 +120,17 @@ fun MainScreenContent(
                     .fillMaxWidth()
                     .absoluteOffset(y = absoluteOffset.dp)
                     .alpha(alpha),
-                meterReadingEnteringDate = when (pagerState.currentPage) {
+                submissionDate = when (pagerState.currentPage) {
                     0 -> uiState.gasDate
                     1 -> uiState.waterDate
                     2 -> uiState.electricityDate
                     else -> ""
-                },
+                } as SubmissionDate?,
                 navigateToAddMeterReading = {
                     navigateToAddMeterReading(pagerState.currentPage)
-                }
+                },
+                isDateExpired = isDateExpired,
+                daysUntilDateExpiration = daysUntilDateExpiration,
             )
             Spacer(modifier = Modifier.height(80.dp))
             Column(

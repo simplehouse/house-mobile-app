@@ -1,6 +1,7 @@
 package io.devmartynov.house.ui.screen.main.model
 
 import io.devmartynov.house.app.model.ActionStatus
+import io.devmartynov.house.domain.model.SubmissionDate
 
 /**
  * Состояние на главном экране
@@ -11,8 +12,8 @@ import io.devmartynov.house.app.model.ActionStatus
  * @param status статус дат
  */
 data class MainScreenState(
-    val gasDate: String? = null,
-    val waterDate: String? = null,
-    val electricityDate: String? = null,
+    val gasDate: SubmissionDate? = null,
+    val waterDate: SubmissionDate? = null,
+    val electricityDate: SubmissionDate? = null,
     val status: ActionStatus = ActionStatus.Idle,
 )

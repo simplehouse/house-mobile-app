@@ -34,6 +34,8 @@ fun NavGraphBuilder.mainGraph(router: Router) {
                 router = router,
                 uiState = uiState,
                 handleEvent = viewModel::handleEvent,
+                getDaysUntilExpirationSubmissionDate = viewModel::getDaysUntilSubmissionDateExpiration,
+                isSubmissionDateExpired = viewModel::isSubmissionDateExpired,
             )
         }
         composable(Route.Profile.id) {
@@ -66,7 +68,7 @@ fun NavGraphBuilder.mainGraph(router: Router) {
                 uiState = viewModel.uiState.collectAsState().value,
                 handleEvent = viewModel::handleEvent,
                 navigateToMeterReadings = {
-                    router.navigateToMetersReading()
+                    router.navigateToMeterReadings()
                 }
             )
         }

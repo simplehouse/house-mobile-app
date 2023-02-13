@@ -13,7 +13,7 @@ class GetMeterReadingDateUseCase @Inject constructor(
     private val meterReadingsRepository: MeterReadingsRepository,
 ) {
 
-    suspend operator fun invoke(): Result<String> {
+    suspend operator fun invoke(): Result<Long> {
         return meterReadingsRepository.getNextSubmissionDate()
     }
 }

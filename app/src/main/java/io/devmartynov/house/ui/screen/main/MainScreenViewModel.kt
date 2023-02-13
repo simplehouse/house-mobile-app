@@ -13,8 +13,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import io.devmartynov.house.app.model.Result
-import java.text.SimpleDateFormat
+import io.devmartynov.house.domain.model.Service
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Вью модель главного экрана
@@ -42,6 +43,57 @@ class MainScreenViewModel @Inject constructor(
     }
 
     /**
+     * Прошла ли дата внесения показания счетчика
+     *
+     * @param service коммунальная услуга
+     * @return true если дата прошла иначе false
+     */
+    fun isSubmissionDateExpired(service: Service): Boolean {
+        val submissionDate = Date()
+
+        when (service) {
+            Service.GAS -> {
+                submissionDate.time = uiState.value.gasDate ?: 0
+            }
+            Service.WATER -> {
+                submissionDate.time = uiState.value.waterDate ?: 0
+            }
+            Service.ELECTRICITY -> {
+                submissionDate.time = uiState.value.electricityDate ?: 0
+            }
+        }
+        return Date().after(submissionDate)
+    }
+
+    /**
+     * Кол-во дней до истечения дата внесения показания счетчика
+     *
+     * @param service коммунальная услуга
+     *
+     * @return кол-во дней
+     */
+    fun getDaysUntilSubmissionDateExpiration(service: Service): Int {
+        val then = Date()
+
+        when (service) {
+            Service.GAS -> {
+                then.time = uiState.value.gasDate ?: 0
+            }
+            Service.WATER -> {
+                then.time = uiState.value.waterDate ?: 0
+            }
+            Service.ELECTRICITY -> {
+                then.time = uiState.value.electricityDate ?: 0
+            }
+        }
+
+        val now = Date()
+        val diff = then.time - now.time
+
+        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS).toInt()
+    }
+
+    /**
      * Получает даты подачи показаний
      *
      * @param isInitialRequest начальная загрузка или нет
@@ -61,15 +113,11 @@ class MainScreenViewModel @Inject constructor(
             withContext(Dispatchers.Main) {
                 when (result) {
                     is Result.Success -> {
-                        val date1 = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.UK)
-                            .parse(result.value)
-                        val date = SimpleDateFormat("dd.MM.yyyy").format(date1)
-
                         uiState.value = uiState.value.copy(
                             status = ActionStatus.Success,
-                            gasDate = date,
-                            waterDate = date,
-                            electricityDate = date
+                            gasDate = result.value,
+                            waterDate = result.value,
+                            electricityDate = result.value,
                         )
                     }
                     is Result.Failure -> {
