@@ -17,11 +17,15 @@ import io.devmartynov.house.ui.screen.addMeterReading.AddMeterReadingViewModel
 import io.devmartynov.house.ui.screen.addMeterReading.components.AddMeterReadingScreen
 import io.devmartynov.house.ui.screen.auth.passwordRecovery.PasswordRecoveryViewModel
 import io.devmartynov.house.ui.screen.auth.passwordRecovery.components.PasswordRecoveryScreen
+import io.devmartynov.house.ui.screen.meterReading.MeterReadingViewModel
 import io.devmartynov.house.ui.screen.meterReading.components.MeterReadingScreen
 import io.devmartynov.house.ui.screen.statistics.components.StatisticsScreen
 
 @OptIn(ExperimentalMaterialNavigationApi::class)
-fun NavGraphBuilder.mainGraph(router: Router) {
+fun NavGraphBuilder.mainGraph(
+    router: Router,
+    navController: NavController,
+) {
     navigation(
         route = RoutesGroup.MAIN.id,
         startDestination = Route.MeterReadings.id,
@@ -74,10 +78,15 @@ fun NavGraphBuilder.mainGraph(router: Router) {
         }
         bottomSheet(
             route = Route.MeterReading.id,
-            arguments = Route.MeterReading.navArguments,
-        ) { navBackStackEntry ->
+        ) {
+            val viewModel = hiltViewModel<MeterReadingViewModel>()
+            val uiState = viewModel.uiState.collectAsState().value
+
             MeterReadingScreen(
-                navBackStackEntry = navBackStackEntry,
+                previousBackStack = navController.previousBackStackEntry,
+                uiState = uiState,
+                addMeterReading = viewModel::addMeterReading,
+                handleEvent = viewModel::handleEvent,
                 navigateToInvoicePreview = {}
             )
         }

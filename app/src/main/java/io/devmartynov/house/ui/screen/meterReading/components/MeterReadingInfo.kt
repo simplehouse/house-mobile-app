@@ -14,10 +14,8 @@ fun MeterReadingInfo(
     modifier: Modifier = Modifier,
     value: Float,
     createDate: String,
-    isExpired: Boolean,
     toPayAmount: Float,
     diffWithPrevValue: Float,
-    usageAmount: Float,
 ) {
     Column(
         modifier = modifier.padding(
@@ -32,15 +30,10 @@ fun MeterReadingInfo(
             value = stringResource(id = R.string.label_measure, value.toString()),
         )
         Divider()
-        Data(
-            title = stringResource(id = R.string.label_usage_amount),
-            value = stringResource(id = R.string.label_measure, usageAmount.toString()),
-        )
-        Divider()
         DiffData(
             title = stringResource(id = R.string.label_diff_with_prev_value),
-            value = stringResource(id = R.string.label_measure, diffWithPrevValue.toString()),
-            isPositive = !isExpired,
+            isPositive = diffWithPrevValue == 0f,
+            diff = stringResource(id = R.string.label_measure, diffWithPrevValue.toString()),
         )
         Divider()
         Data(
@@ -50,7 +43,10 @@ fun MeterReadingInfo(
         Divider()
         Data(
             title = stringResource(id = R.string.label_create_date),
-            value = stringResource(id = R.string.label_amount_with_currency, toPayAmount.toString()),
+            value = stringResource(
+                id = R.string.label_amount_with_currency,
+                toPayAmount.toString()
+            ),
         )
     }
 }

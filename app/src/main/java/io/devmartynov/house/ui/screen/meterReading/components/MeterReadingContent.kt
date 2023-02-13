@@ -8,12 +8,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import io.devmartynov.house.R
+import io.devmartynov.house.app.helpers.Utils
+import io.devmartynov.house.domain.model.MeterReading
 import io.devmartynov.house.ui.screen.meterReading.model.MeterReadingState
 
 @Composable
 fun MeterReadingContent(
     modifier: Modifier = Modifier,
-    uiState: MeterReadingState = MeterReadingState(),
+    uiState: MeterReadingState,
+    meterReading: MeterReading,
     navigateToInvoicePreview: () -> Unit,
 ) {
     Column(
@@ -28,12 +31,10 @@ fun MeterReadingContent(
             style = MaterialTheme.typography.h2,
         )
         MeterReadingInfo(
-            value = uiState.meterReading.value,
-            createDate = uiState.meterReading.createTime,
-            isExpired = uiState.meterReading.isSubmissionDateExpired,
-            toPayAmount = uiState.meterReading.toPayAmount,
-            diffWithPrevValue = uiState.meterReading.diffWithPrevValue,
-            usageAmount = uiState.meterReading.usageAmount
+            value = meterReading.value,
+            createDate = Utils.formatDateString(meterReading.createTime),
+            toPayAmount = meterReading.toPayAmount,
+            diffWithPrevValue = meterReading.diffWithPrevValue,
         )
         Controls(
             modifier = Modifier.fillMaxWidth(),

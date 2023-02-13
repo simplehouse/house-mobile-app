@@ -24,7 +24,7 @@ fun MeterReadingsList(
     meterReadings: List<MeterReading> = emptyList(),
     service: Service = Service.GAS,
     isLoading: Boolean = false,
-    onMeterReadingClick: (meterReadingId: Int) -> Unit = {},
+    onMeterReadingClick: (meterReadingId: MeterReading) -> Unit = {},
 ) {
     LazyColumn(
         modifier = modifier,
@@ -55,7 +55,7 @@ fun MeterReadingsList(
                 amount = meterReading.toPayAmount,
                 isExpired = meterReading.isSubmissionDateExpired,
                 onClick = {
-                    onMeterReadingClick(meterReading.id)
+                    onMeterReadingClick(meterReading)
                 }
             )
             Divider(

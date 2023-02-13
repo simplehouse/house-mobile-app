@@ -43,7 +43,10 @@ fun Navigation(
             startDestination = initialRoute,
         ) {
             authGraph(router = appState.router)
-            mainGraph(router = appState.router)
+            mainGraph(
+                router = appState.router,
+                navController = appState.navController,
+            )
         }
     }
 }

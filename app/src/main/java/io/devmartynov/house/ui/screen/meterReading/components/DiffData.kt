@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDownward
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,7 +18,7 @@ import io.devmartynov.house.ui.theme.Red
 fun DiffData(
     modifier: Modifier = Modifier,
     title: String,
-    value: String,
+    diff: String,
     isPositive: Boolean,
 ) {
     Row(
@@ -31,7 +32,7 @@ fun DiffData(
         )
         Icon(
             imageVector = if (isPositive) {
-                Icons.Default.ArrowUpward
+                Icons.Default.ArrowDownward
             } else {
                 Icons.Default.ArrowUpward
             },
@@ -44,7 +45,7 @@ fun DiffData(
         )
         Spacer(modifier = Modifier.width(3.dp))
         Text(
-            text = value,
+            text = diff,
             fontSize = 16.sp,
         )
     }

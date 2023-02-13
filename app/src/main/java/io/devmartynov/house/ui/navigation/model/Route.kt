@@ -34,22 +34,16 @@ sealed class Route(val baseId: String) {
     }
 
     object MeterReading : Route("meter_reading") {
-        const val PARAM_METER_READING_ID = "id"
-        override val id = "$baseId/{$PARAM_METER_READING_ID}"
+        const val PARAM_METER_READING = "meter_reading"
+        override val id = "$baseId"
 
-        val navArguments = listOf(
-            navArgument(PARAM_METER_READING_ID) {
-                type = NavType.IntType
-                nullable = false
+        fun getMeterReading(backStackEntry: NavBackStackEntry?): io.devmartynov.house.domain.model.MeterReading? {
+            if (backStackEntry == null) {
+                return null
             }
-        )
-
-        fun buildRoute(meterReadingId: Int): String {
-            return "$baseId/$meterReadingId"
-        }
-
-        fun getMeterReadingId(backStackEntry: NavBackStackEntry): Int? {
-            return backStackEntry.arguments?.getInt(PARAM_METER_READING_ID)
+            return backStackEntry
+                .savedStateHandle
+                .get<io.devmartynov.house.domain.model.MeterReading>(PARAM_METER_READING)
         }
     }
 }

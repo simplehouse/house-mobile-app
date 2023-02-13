@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import io.devmartynov.house.domain.model.MeterReading
 import io.devmartynov.house.domain.model.Service
 import io.devmartynov.house.ui.screen.main.MeterReadingsPageViewModel
 
@@ -11,7 +12,7 @@ import io.devmartynov.house.ui.screen.main.MeterReadingsPageViewModel
 fun MeterReadingsPage(
     modifier: Modifier = Modifier,
     service: Service,
-    onMeterReadingClick: (meterReadingId: Int) -> Unit = {},
+    onMeterReadingClick: (meterReading: MeterReading) -> Unit = {},
 ) {
     val viewModel: MeterReadingsPageViewModel = hiltViewModel(key = service.ordinal.toString())
     val uiState = viewModel.uiState.collectAsState().value

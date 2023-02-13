@@ -1,10 +1,12 @@
 package io.devmartynov.house.ui.screen.meterReading.model
 
-import io.devmartynov.house.domain.model.MeterReading
 import io.devmartynov.house.app.model.ActionStatus
 
+/**
+ * Состояние экрана(боттом щит диалог) детальной информации показания счетчика
+ *
+ * @param downloadStatus статус загрузки квитанции об оплате коммунальных услуг
+ */
 data class MeterReadingState(
-    val meterReading: MeterReading = MeterReading(),
-    val meterReadingStatus: ActionStatus = ActionStatus.Idle,
     val downloadStatus: ActionStatus = ActionStatus.Idle,
 )

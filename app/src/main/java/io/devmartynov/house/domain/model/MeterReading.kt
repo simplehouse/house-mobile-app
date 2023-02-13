@@ -1,5 +1,8 @@
 package io.devmartynov.house.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 /**
  * Показание счетчика
  *
@@ -12,6 +15,7 @@ package io.devmartynov.house.domain.model
  * @param value значение по счетчику на момент подачи
  * @param usageAmount сколько было использовано за этот месяц
  */
+@Parcelize
 data class MeterReading(
     val id: Int = -1,
     val isSubmissionDateExpired: Boolean = false,
@@ -21,4 +25,4 @@ data class MeterReading(
     val diffWithPrevValue: Float = 0f,
     val value: Float = 0f,
     val usageAmount: Float = 0f,
-)
+) : Parcelable
