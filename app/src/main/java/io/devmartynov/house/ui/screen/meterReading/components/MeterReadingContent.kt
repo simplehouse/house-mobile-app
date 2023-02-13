@@ -29,8 +29,8 @@ fun MeterReadingContent(
         )
         MeterReadingInfo(
             value = uiState.meterReading.value,
-            createDate = uiState.meterReading.createDate,
-            isExpired = uiState.meterReading.isExpired,
+            createDate = uiState.meterReading.createTime,
+            isExpired = uiState.meterReading.isSubmissionDateExpired,
             toPayAmount = uiState.meterReading.toPayAmount,
             diffWithPrevValue = uiState.meterReading.diffWithPrevValue,
             usageAmount = uiState.meterReading.usageAmount

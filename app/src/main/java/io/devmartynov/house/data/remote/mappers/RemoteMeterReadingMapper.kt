@@ -11,14 +11,14 @@ import io.devmartynov.house.domain.model.Service
  */
 fun RemoteMeterReading.toDomainModel(): MeterReading {
     return MeterReading(
-        id = this.id,
-        createDate = this.createDate,
-        isExpired = this.isExpired,
-        toPayAmount = this.toPayAmount,
-        service = Service.values()[this.service],
-        diffWithPrevValue = this.diffWithPrevValue,
-        value = this.value,
-        usageAmount = this.usageAmount,
+        id = id,
+        isSubmissionDateExpired = isSubmissionDateExpired,
+        createTime = createTime,
+        toPayAmount = toPayAmount,
+        service = Service.values()[service],
+        diffWithPrevValue = diffWithPrevValue,
+        value = value,
+        usageAmount = diffWithPrevValue,
     )
 }
 
@@ -32,12 +32,11 @@ fun RemoteMeterReading.toDomainModel(): MeterReading {
 fun RemoteMeterReading.fromDomainModel(model: MeterReading): RemoteMeterReading {
     return RemoteMeterReading(
         id = model.id,
-        createDate = model.createDate,
-        isExpired = model.isExpired,
+        isSubmissionDateExpired = model.isSubmissionDateExpired,
+        createTime = model.createTime,
         toPayAmount = model.toPayAmount,
         service = model.service.ordinal,
-        diffWithPrevValue = model.diffWithPrevValue,
         value = model.value,
-        usageAmount = model.usageAmount,
+        diffWithPrevValue = model.diffWithPrevValue,
     )
 }

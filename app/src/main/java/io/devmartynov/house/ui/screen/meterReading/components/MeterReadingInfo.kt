@@ -15,7 +15,7 @@ fun MeterReadingInfo(
     value: Float,
     createDate: String,
     isExpired: Boolean,
-    toPayAmount: Int,
+    toPayAmount: Float,
     diffWithPrevValue: Float,
     usageAmount: Float,
 ) {

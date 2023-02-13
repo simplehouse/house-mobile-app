@@ -38,7 +38,7 @@ sealed class ActionStatus {
      * @return true если происходит загурзка, иначе false
      */
     fun isLoading(): Boolean {
-        return this == Loading
+        return this is Loading
     }
 
     /**

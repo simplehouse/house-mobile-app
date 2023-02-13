@@ -4,8 +4,8 @@ package io.devmartynov.house.domain.model
  * Показание счетчика
  *
  * @param id уникальный ключ показания
- * @param createDate дата подачи показания
- * @param isExpired просрочена ли дата подачи показания
+ * @param isSubmissionDateExpired просрочена ли дата подачи показания
+ * @param createTime дата подачи показания
  * @param toPayAmount сумма, которую нужно заплатить
  * @param service коммунальная услуга
  * @param diffWithPrevValue разница по значению с прошлым месяцем
@@ -14,11 +14,11 @@ package io.devmartynov.house.domain.model
  */
 data class MeterReading(
     val id: Int = -1,
-    val createDate: String = "",
-    val isExpired: Boolean = false,
-    val toPayAmount: Int = 0,
+    val isSubmissionDateExpired: Boolean = false,
+    val createTime: String = "",
+    val toPayAmount: Float = 0f,
     val service: Service = Service.GAS,
     val diffWithPrevValue: Float = 0f,
     val value: Float = 0f,
     val usageAmount: Float = 0f,
-) : java.io.Serializable
+)

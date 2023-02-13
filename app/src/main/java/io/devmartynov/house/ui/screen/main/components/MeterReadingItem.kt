@@ -23,7 +23,7 @@ import io.devmartynov.house.ui.theme.White
 fun MeterReadingItem(
     modifier: Modifier = Modifier,
     date: String,
-    amount: Int,
+    amount: Float,
     isExpired: Boolean,
     onClick: () -> Unit
 ) {
@@ -52,7 +52,7 @@ fun MeterReadingItem(
             fontSize = 16.sp,
         )
         Text(
-            text = stringResource(id = R.string.label_amount, amount),
+            text = stringResource(id = R.string.label_amount, amount.toString()),
             fontFamily = GilroyFontMedium,
             fontSize = 16.sp,
         )

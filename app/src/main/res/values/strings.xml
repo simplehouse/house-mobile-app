@@ -35,7 +35,7 @@
     <string name="label_service_electricity">Электричество</string>
     <string name="cd_go_to_profile">Перейти в профиль пользователя</string>
     <string name="cd_enter_reading_meter">Внести показания</string>
-    <string name="label_amount">%d руб.</string>
+    <string name="label_amount">%s руб.</string>
     <string name="label_meter_reading_create_date">%sг.</string>
     <string name="cd_look_meter_reading_detail_info">Посмотреть детальную информацию показания счетчика</string>
     <string name="label_last_meter_readings">Последние показания</string>

@@ -21,6 +21,7 @@ fun MeterReadingsPage(
         modifier = modifier,
         meterReadings = uiState.meterReadings,
         service = service,
+        isLoading = uiState.status.isLoading(),
         onMeterReadingClick = onMeterReadingClick
     )
 }
