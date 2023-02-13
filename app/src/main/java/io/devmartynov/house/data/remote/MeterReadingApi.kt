@@ -13,13 +13,13 @@ import retrofit2.http.Query
  */
 interface MeterReadingApi {
 
-    @GET("/meter-readings")
+    @GET("meter-readings")
     suspend fun getMeterReadings(@Query("service") service: Int): Response<List<RemoteMeterReading>>
 
     /**
      * Список поданных показаний счетчика
      */
-    @POST("/meter-readings")
+    @POST("meter-readings")
     suspend fun saveMeterReading(
         @Field("value") value: Int,
         @Field("service") service: Int
@@ -28,6 +28,6 @@ interface MeterReadingApi {
     /**
      * Следующая дата подачи показаний счетчика
      */
-    @GET("/meter-reading-date")
+    @GET("meter-reading-date")
     suspend fun getNextSubmissionDate(): Response<SubmissionDate>
 }
