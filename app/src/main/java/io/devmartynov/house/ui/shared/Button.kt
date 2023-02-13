@@ -20,6 +20,10 @@ fun Button(
     isLoading: Boolean = false,
     enabled: Boolean = true,
     elevation: ButtonElevation? = null,
+    colors: ButtonColors = ButtonDefaults.buttonColors(
+        backgroundColor = Blue,
+        disabledBackgroundColor = LightBlue
+    ),
     labelFontSize: TextUnit = 18.sp,
     imageVector: ImageVector? = null,
     onClick: () -> Unit = {},
@@ -32,10 +36,7 @@ fun Button(
             .heightIn(52.dp)
             .widthIn(52.dp)
             .animateContentSize(),
-        colors = ButtonDefaults.buttonColors(
-            backgroundColor = Blue,
-            disabledBackgroundColor = LightBlue
-        ),
+        colors = colors,
         onClick = onClick,
         elevation = elevation,
         contentPadding = PaddingValues(15.dp),
