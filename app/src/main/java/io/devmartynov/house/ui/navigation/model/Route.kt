@@ -35,7 +35,6 @@ sealed class Route(val baseId: String) {
 
     object MeterReading : Route("meter_reading") {
         const val PARAM_METER_READING = "meter_reading"
-        override val id = "$baseId"
 
         fun getMeterReading(backStackEntry: NavBackStackEntry?): io.devmartynov.house.domain.model.MeterReading? {
             if (backStackEntry == null) {
@@ -46,4 +45,9 @@ sealed class Route(val baseId: String) {
                 .get<io.devmartynov.house.domain.model.MeterReading>(PARAM_METER_READING)
         }
     }
+
+    /**
+     * Экран списка квитанций об оплате коммунальных платежей
+     */
+    object Invoices : Route("invoices")
 }

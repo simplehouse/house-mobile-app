@@ -38,4 +38,8 @@ class RouterImpl(
         )
         navController.navigate(Route.MeterReading.id)
     }
+
+    override fun navigateToInvoices() {
+        navController.navigate(Route.Invoices.id)
+    }
 }

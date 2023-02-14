@@ -16,4 +16,6 @@ interface Router {
     fun navigateToAddMeterReading(service: Int)
 
     fun navigateToMeterReading(meterReading: MeterReading)
+
+    fun navigateToInvoices()
 }

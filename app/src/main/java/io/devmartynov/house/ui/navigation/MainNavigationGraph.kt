@@ -17,6 +17,8 @@ import io.devmartynov.house.ui.screen.addMeterReading.AddMeterReadingViewModel
 import io.devmartynov.house.ui.screen.addMeterReading.components.AddMeterReadingScreen
 import io.devmartynov.house.ui.screen.auth.passwordRecovery.PasswordRecoveryViewModel
 import io.devmartynov.house.ui.screen.auth.passwordRecovery.components.PasswordRecoveryScreen
+import io.devmartynov.house.ui.screen.invoices.InvoicesViewModel
+import io.devmartynov.house.ui.screen.invoices.components.InvoicesScreen
 import io.devmartynov.house.ui.screen.meterReading.components.MeterReadingScreen
 import io.devmartynov.house.ui.screen.statistics.components.StatisticsScreen
 
@@ -60,6 +62,18 @@ fun NavGraphBuilder.mainGraph(
             val viewModel = hiltViewModel<PasswordRecoveryViewModel>()
 
             PasswordRecoveryScreen()
+        }
+        composable(Route.Invoices.id) {
+            val viewModel = hiltViewModel<InvoicesViewModel>()
+            val uiState = viewModel.uiState.collectAsState().value
+
+            InvoicesScreen(
+                uiState = uiState,
+                handleEvent = viewModel::handleEvent,
+                navigateToPrevScreen = {
+                    navController.popBackStack()
+                }
+            )
         }
         composable(
             route = Route.AddMeterReading.id,

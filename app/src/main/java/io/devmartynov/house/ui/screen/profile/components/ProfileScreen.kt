@@ -30,5 +30,8 @@ fun ProfileScreen(
         navigateToMetersReading = {
             router.navigateToMeterReadings()
         },
+        navigateToInvoices = {
+            router.navigateToInvoices()
+        }
     )
 }

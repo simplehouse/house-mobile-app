@@ -24,6 +24,7 @@ fun ProfileSection(
     onNavigateStatistic: () -> Unit = {},
     onNavigateChangePassword: () -> Unit = {},
     onChangeTheme: (theme: Theme) -> Unit = {},
+    onNavigateInvoices: () -> Unit = {},
     onDeleteProfile: () -> Unit = {},
     onSignOut: () -> Unit = {},
 ) {
@@ -50,6 +51,16 @@ fun ProfileSection(
             leadingIcon = Icons.Default.Lock,
             trailingIcon = Icons.Default.KeyboardArrowRight,
             onClick = onNavigateChangePassword
+        )
+        Divider(
+            startIndent = 30.dp,
+            endIndent = 30.dp,
+        )
+        ProfileOption(
+            label = stringResource(id = R.string.cd_go_to_invoices),
+            leadingIcon = Icons.Default.PriceCheck,
+            trailingIcon = Icons.Default.KeyboardArrowRight,
+            onClick = onNavigateInvoices,
         )
         Divider(
             startIndent = 30.dp,

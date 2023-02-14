@@ -29,6 +29,7 @@ fun ProfileContent(
     navigateToStatistics: () -> Unit = {},
     navigateToPasswordRecovery: () -> Unit = {},
     navigateToMetersReading: () -> Unit = {},
+    navigateToInvoices: () -> Unit = {},
 ) {
     TopAppBar(
         modifier = Modifier.zIndex(1f),
@@ -67,6 +68,7 @@ fun ProfileContent(
             uiState = profileState,
             onNavigateStatistic = navigateToStatistics,
             onNavigateChangePassword = navigateToPasswordRecovery,
+            onNavigateInvoices = navigateToInvoices,
             onChangeTheme = { theme: Theme ->
                 handleEvent(ProfileEvent.ThemeChanged(theme))
             },

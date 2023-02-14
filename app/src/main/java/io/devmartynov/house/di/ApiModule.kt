@@ -25,6 +25,12 @@ class ApiModule {
 
     @Provides
     @Singleton
+    fun provideInvoiceApi(retrofit: Retrofit): InvoiceApi {
+        return retrofit.create(InvoiceApi::class.java)
+    }
+
+    @Provides
+    @Singleton
     fun provideAuthApi(retrofit: Retrofit): AuthApi {
         return retrofit.create(AuthApi::class.java)
     }
