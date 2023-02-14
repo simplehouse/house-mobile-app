@@ -25,6 +25,7 @@
     <string name="label_app_version">Версия приложения</string>
     <string name="cd_go_back">Перейти на предыдущий экран</string>
     <string name="cd_change_password">Изменить пароль</string>
+    <string name="cd_go_to_invoices">Перейти к квитанциям</string>
     <string name="cd_delete_profile">Удалить профиль</string>
     <string name="cd_sign_out">Выйти</string>
     <string name="label_statistics">Статистика</string>
@@ -60,10 +61,13 @@
     <string name="label_to_pay_amount">Сумма к оплате</string>
     <string name="label_measure">%s м3</string>
     <string name="label_amount_with_currency">%s руб.</string>
-    <string name="label_see_invoice">Посмотреть квитанцию</string>
-    <string name="label_share_invoice">Поделиться квитанцией</string>
-    <string name="label_download_invoice">Загрузить квитанцию</string>
     <string name="label_share_meter_reading_info">Поделиться показанием счетчика</string>
     <string name="label_share_subject">Показания счетчика за %sг.</string>
     <string name="label_share_text">Коммунальная услуга: %s\nДата подачи показания: %sг.\nЗначение по счетчику: %s м3\nРазница с прошлым месяцем: %s м3\nСумма к оплате: %s руб.\n\n Отправлено из приложения \"%s\"</string>
+
+    <!-- Invoices   -->
+    <string name="label_invoices">Квитанции</string>
+    <string name="label_see_invoice">Посмотреть</string>
+    <string name="label_share_invoice">Поделиться</string>
+    <string name="label_download_invoice">Загрузить</string>
 </resources>
