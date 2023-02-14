@@ -42,7 +42,7 @@ fun MeterReadingInfo(
         )
         Divider()
         Data(
-            title = stringResource(id = R.string.label_create_date),
+            title = stringResource(id = R.string.label_to_pay_amount),
             value = stringResource(
                 id = R.string.label_amount_with_currency,
                 toPayAmount.toString()

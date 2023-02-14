@@ -63,4 +63,7 @@
     <string name="label_see_invoice">Посмотреть квитанцию</string>
     <string name="label_share_invoice">Поделиться квитанцией</string>
     <string name="label_download_invoice">Загрузить квитанцию</string>
+    <string name="label_share_meter_reading_info">Поделиться показанием счетчика</string>
+    <string name="label_share_subject">Показания счетчика за %sг.</string>
+    <string name="label_share_text">Коммунальная услуга: %s\nДата подачи показания: %sг.\nЗначение по счетчику: %s м3\nРазница с прошлым месяцем: %s м3\nСумма к оплате: %s руб.\n\n Отправлено из приложения \"%s\"</string>
 </resources>
