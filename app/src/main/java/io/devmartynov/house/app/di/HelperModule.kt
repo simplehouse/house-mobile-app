@@ -7,10 +7,14 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.devmartynov.house.app.AppConfig
+import io.devmartynov.house.app.AuthManagerImpl
 import io.devmartynov.house.app.InvoicePdfServiceImpl
 import io.devmartynov.house.app.model.ThemeManager
 import io.devmartynov.house.app.ThemeManagerImpl
+import io.devmartynov.house.app.model.AuthManager
 import io.devmartynov.house.domain.model.PdfService
+import io.devmartynov.house.domain.repositories.AuthStore
+import io.devmartynov.house.domain.repositories.SettingsStore
 import javax.inject.Singleton
 
 @Module
@@ -19,11 +23,14 @@ class HelperModule {
 
     @Provides
     @Singleton
-    fun providesThemeManager(
-        @ApplicationContext context: Context,
-        appConfig: AppConfig,
-    ): ThemeManager {
-        return ThemeManagerImpl(context, appConfig)
+    fun providesThemeManager(settingsStore: SettingsStore): ThemeManager {
+        return ThemeManagerImpl(settingsStore)
+    }
+
+    @Provides
+    @Singleton
+    fun providesAuthManager(authStore: AuthStore): AuthManager {
+        return AuthManagerImpl(authStore)
     }
 
     @Provides

@@ -6,12 +6,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.devmartynov.house.domain.useCase.GetUserUseCase
 import io.devmartynov.house.ui.screen.profile.model.ProfileEvent
 import io.devmartynov.house.ui.screen.profile.model.ProfileState
-import io.devmartynov.house.app.enums.Theme
+import io.devmartynov.house.domain.enums.Theme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import io.devmartynov.house.app.model.Result
+import io.devmartynov.house.domain.useCase.SetThemeUseCase
 import io.devmartynov.house.domain.useCase.SignOutUseCase
 import kotlinx.coroutines.withContext
 
@@ -22,6 +23,7 @@ import kotlinx.coroutines.withContext
 class ProfileViewModel @Inject constructor(
     private val getUserUseCase: GetUserUseCase,
     private val signOutUseCase: SignOutUseCase,
+    private val setThemeUseCase: SetThemeUseCase,
 ) : ViewModel() {
     val uiState = MutableStateFlow(ProfileState())
 
@@ -55,6 +57,7 @@ class ProfileViewModel @Inject constructor(
      */
     private fun setTheme(theme: Theme) {
         if (uiState.value.theme != theme) {
+            setThemeUseCase(theme)
             uiState.value = uiState.value.copy(theme = theme)
         }
     }

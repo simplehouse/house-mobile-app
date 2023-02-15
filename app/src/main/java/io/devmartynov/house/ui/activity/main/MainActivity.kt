@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import dagger.hilt.android.AndroidEntryPoint
+import io.devmartynov.house.domain.enums.Theme
 import io.devmartynov.house.ui.HouseApp
 import io.devmartynov.house.ui.activity.main.model.MainState
 import io.devmartynov.house.ui.app.model.rememberAppState
@@ -23,11 +23,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             uiState = mainViewModel.uiState.collectAsState().value
             val appState = rememberAppState();
-            val isDark = mainViewModel.isDark(uiState.theme) ?: isSystemInDarkTheme()
             HouseApp(
                 appState = appState,
                 isAuthorized = uiState.isAuthorized,
-                isDarkTheme = isDark,
+                isDarkTheme = mainViewModel.isDarkTheme()
             )
             LaunchedEffect(this@MainActivity) {
                 if (!uiState.isAuthorized) {

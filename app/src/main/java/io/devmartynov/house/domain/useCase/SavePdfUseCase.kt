@@ -8,6 +8,8 @@ import io.devmartynov.house.app.model.Result
 
 /**
  * Сценарий сохранения документа на устройство
+ *
+ * @param pdfService
  */
 class SavePdfUseCase @Inject constructor(
     private val pdfService: PdfService,

@@ -2,7 +2,7 @@ package io.devmartynov.house.ui.activity.main.model
 
 import io.devmartynov.house.domain.model.UserEntity
 import io.devmartynov.house.app.model.ActionStatus
-import io.devmartynov.house.app.enums.Theme
+import io.devmartynov.house.domain.enums.Theme
 
 /**
  * Состояние на активити(глобальное состояние)

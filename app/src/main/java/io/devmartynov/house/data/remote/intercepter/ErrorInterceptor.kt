@@ -1,7 +1,7 @@
 package io.devmartynov.house.data.remote.intercepter
 
 import io.devmartynov.house.data.remote.enums.HttpCode
-import io.devmartynov.house.app.model.Auth
+import io.devmartynov.house.app.model.AuthManager
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
@@ -9,10 +9,10 @@ import javax.inject.Inject
 /**
  * Обрабатывает http ошибки
  *
- * @param auth
+ * @param authManager
  */
 class ErrorInterceptor @Inject constructor(
-    private val auth: Auth
+    private val authManager: AuthManager,
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val response = chain.proceed(
@@ -25,7 +25,7 @@ class ErrorInterceptor @Inject constructor(
         if (!response.isSuccessful) {
             when (response.code()) {
                 HttpCode.FORBIDDEN.code -> {
-                    auth.signOut()
+                    authManager.signOut()
                 }
                 HttpCode.NOT_FOUND.code -> {
                     // todo implement

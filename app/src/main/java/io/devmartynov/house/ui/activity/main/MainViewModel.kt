@@ -3,20 +3,18 @@ package io.devmartynov.house.ui.activity.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.devmartynov.house.app.model.Auth
-import io.devmartynov.house.app.model.AuthStateListener
+import io.devmartynov.house.app.model.*
 import io.devmartynov.house.domain.useCase.GetUserUseCase
 import io.devmartynov.house.domain.useCase.SetThemeUseCase
 import io.devmartynov.house.ui.activity.main.model.MainEvent
 import io.devmartynov.house.ui.activity.main.model.MainState
-import io.devmartynov.house.app.model.ActionStatus
-import io.devmartynov.house.app.enums.Theme
+import io.devmartynov.house.domain.enums.Theme
+import io.devmartynov.house.domain.useCase.GetThemeUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import io.devmartynov.house.app.model.Result
 
 /**
  * Вью модель активити(в приложении только одна активити)
@@ -25,12 +23,15 @@ import io.devmartynov.house.app.model.Result
 class MainViewModel @Inject constructor(
     private val themeUseCase: SetThemeUseCase,
     private val getUserUseCase: GetUserUseCase,
-    private val auth: Auth,
+    private val getThemeUseCase: GetThemeUseCase,
+    private val authManager: AuthManager,
+    private val themeManager: ThemeManager,
 ) : ViewModel() {
-    val uiState = MutableStateFlow(MainState(isAuthorized = auth.isAuthorized()))
+    val uiState = MutableStateFlow(MainState(isAuthorized = authManager.isAuthorized()))
 
     init {
         addAuthStateListener()
+        addThemeStateListener()
     }
 
     /**
@@ -49,12 +50,11 @@ class MainViewModel @Inject constructor(
      * Добавляет колбэк на изменения состояния авторизации пользователя.
      */
     private fun addAuthStateListener() {
-        auth.removeAllChangeListeners()
-        auth.addChangeListener(object : AuthStateListener {
-            override fun onAuthChanged(isAuthorized: Boolean) {
-                updateIsAuthorized(isAuthorized = isAuthorized)
+        authManager.addChangeListener(object : StateListener<Boolean> {
+            override fun onChanged(value: Boolean) {
+                uiState.value = uiState.value.copy(isAuthorized = value)
 
-                if (isAuthorized) {
+                if (value) {
                     loadUser()
                 }
             }
@@ -62,13 +62,23 @@ class MainViewModel @Inject constructor(
     }
 
     /**
+     * Добавляет колбэк на изменения цветовой темы приложения.
+     */
+    private fun addThemeStateListener() {
+        themeManager.addChangeListener(object : StateListener<Theme> {
+            override fun onChanged(value: Theme) {
+                uiState.value = uiState.value.copy(theme = value)
+            }
+        })
+    }
+
+    /**
      * Является ли цветовая тема темной?
      *
-     * @param theme цветовая тема
      * @return true если да, иначе false
      */
-    fun isDark(theme: Theme): Boolean? {
-        return themeUseCase.isDark(theme)
+    fun isDarkTheme(): Boolean {
+        return getThemeUseCase() == Theme.DARK
     }
 
     /**
@@ -77,17 +87,8 @@ class MainViewModel @Inject constructor(
      * @param theme новая цветовая тема
      */
     private fun changeTheme(theme: Theme) {
-        themeUseCase.setTheme(theme)
+        themeUseCase(theme)
         uiState.value = uiState.value.copy(theme = theme)
-    }
-
-    /**
-     * Обновляет состояние авторизации
-     *
-     * @param isAuthorized авторизован пользователь или нет
-     */
-    private fun updateIsAuthorized(isAuthorized: Boolean) {
-        uiState.value = uiState.value.copy(isAuthorized = isAuthorized)
     }
 
     /**

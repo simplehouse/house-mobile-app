@@ -1,56 +1,43 @@
 package io.devmartynov.house.app
 
-import android.content.Context
-import android.content.SharedPreferences
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.edit
-import io.devmartynov.house.app.enums.Theme
+import io.devmartynov.house.domain.enums.Theme
 import io.devmartynov.house.app.model.ThemeManager
+import io.devmartynov.house.domain.repositories.SettingsStore
 
 class ThemeManagerImpl @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val appConfig: AppConfig,
-) : ThemeManager {
-    private val preferences: SharedPreferences =
-        context.getSharedPreferences(
-            appConfig.SETTINGS_PREFERENCES_NAME,
-            Context.MODE_PRIVATE
-        )
-    private val _theme = MutableStateFlow(getThemeFromPreferences())
-    override val theme: StateFlow<Theme> = _theme.asStateFlow()
+    settingsStore: SettingsStore,
+) : ThemeManager() {
+    private val theme = MutableStateFlow(settingsStore.getTheme())
 
-    private fun getThemeFromPreferences(): Theme {
-        val ordinal = preferences.getInt(
-            appConfig.SETTINGS_PREFERENCES_THEME_KEY,
-            Theme.SYSTEM.ordinal
-        )
-        return Theme.values()[ordinal]
+    override fun notifyListeners() {
+        val theme = theme.value
+        listeners.forEach { it.onChanged(theme) }
     }
 
     override fun setTheme(theme: Theme) {
-        AppCompatDelegate.setDefaultNightMode(
-            when (theme) {
-                Theme.SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-                Theme.LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
-                Theme.DARK -> AppCompatDelegate.MODE_NIGHT_YES
-            }
-        )
-        preferences.edit {
-            putInt(appConfig.SETTINGS_PREFERENCES_THEME_KEY, theme.ordinal)
-        }
-        _theme.value = theme
+        this.theme.value = theme
+        notifyListeners()
     }
 
-    override fun isDark(theme: Theme): Boolean? {
-        return when (theme) {
-            Theme.DARK -> true
-            Theme.LIGHT -> false
-            Theme.SYSTEM -> null
-        }
+    override fun getTheme(): Theme {
+        return theme.value
+    }
+
+    override fun checkIsDark(theme: Theme): Boolean {
+        return theme == Theme.DARK
+    }
+
+    override fun isSystem(): Boolean {
+        return theme.value == Theme.SYSTEM
+    }
+
+    override fun isDark(): Boolean {
+        return theme.value == Theme.DARK
+    }
+
+    override fun isLight(): Boolean {
+        return theme.value == Theme.LIGHT
     }
 }

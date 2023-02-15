@@ -1,20 +1,22 @@
 package io.devmartynov.house.domain.useCase
 
-import io.devmartynov.house.app.enums.Theme
+import io.devmartynov.house.domain.enums.Theme
 import io.devmartynov.house.app.model.ThemeManager
-import kotlinx.coroutines.flow.StateFlow
+import io.devmartynov.house.domain.repositories.SettingsStore
 import javax.inject.Inject
 
+/**
+ * Сценарий изменения цветовой темы приложения
+ *
+ * @param themeManager
+ * @param settingsStore
+ */
 class SetThemeUseCase @Inject constructor(
-    private val themeManager: ThemeManager
+    private val themeManager: ThemeManager,
+    private val settingsStore: SettingsStore,
 ) {
-    val theme: StateFlow<Theme> = themeManager.theme
-
-    fun setTheme(theme: Theme) {
+    operator fun invoke(theme: Theme) {
+        settingsStore.setTheme(theme)
         themeManager.setTheme(theme)
-    }
-
-    fun isDark(theme: Theme): Boolean? {
-        return themeManager.isDark(theme)
     }
 }

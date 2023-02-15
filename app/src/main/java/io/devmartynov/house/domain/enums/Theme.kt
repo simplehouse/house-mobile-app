@@ -1,4 +1,4 @@
-package io.devmartynov.house.app.enums
+package io.devmartynov.house.domain.enums
 
 import androidx.annotation.StringRes
 import io.devmartynov.house.R

@@ -16,6 +16,6 @@ class SaveMeterReadingUseCase @Inject constructor(
      * @param service коммунальная услуга по которой подается показание
      */
     suspend operator fun invoke(value: String, service: Service) {
-
+        // todo implement
     }
 }
