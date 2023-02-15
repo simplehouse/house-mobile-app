@@ -29,8 +29,26 @@ sealed class ActionStatus {
 
     /**
      * Успешное выполнение действия
+     *
+     * @param data данные обозначающие успех выполнения действия
      */
-    object Success : ActionStatus()
+    class Success(val data: Any? = null) : ActionStatus()
+
+    /**
+     * Получает данные после успешного результата действий
+     */
+    fun getSuccessfulData(): Any? {
+        if (this is Success) {
+            return this.data
+        }
+        return null
+    }
+    /**
+     * Успешно ли завершилось действие
+     */
+    fun isSuccessful(): Boolean {
+        return this is Success
+    }
 
     /**
      * Происходит ли начальная загрузка

@@ -7,8 +7,10 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.devmartynov.house.app.AppConfig
+import io.devmartynov.house.app.InvoicePdfServiceImpl
 import io.devmartynov.house.app.model.ThemeManager
 import io.devmartynov.house.app.ThemeManagerImpl
+import io.devmartynov.house.domain.model.PdfService
 import javax.inject.Singleton
 
 @Module
@@ -28,5 +30,11 @@ class Helper {
     @Singleton
     fun provideAppConfig(): AppConfig {
         return AppConfig()
+    }
+
+    @Provides
+    @Singleton
+    fun providePdfService(@ApplicationContext context: Context): PdfService {
+        return InvoicePdfServiceImpl(context)
     }
 }

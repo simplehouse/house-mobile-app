@@ -8,8 +8,10 @@ import io.devmartynov.house.domain.model.InvoiceEntity
  *
  * @param invoices список квитанций
  * @param invoicesStatus статус квитанций
+ * @param invoiceDownloadedStatus статус сохранения документа квитанции
  */
 data class InvoicesState(
     val invoices: List<InvoiceEntity> = emptyList(),
     val invoicesStatus: ActionStatus = ActionStatus.Idle,
+    val invoiceDownloadedStatus: ActionStatus = ActionStatus.Idle,
 )

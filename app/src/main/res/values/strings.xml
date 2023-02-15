@@ -70,4 +70,10 @@
     <string name="label_see_invoice">Посмотреть</string>
     <string name="label_share_invoice">Поделиться</string>
     <string name="label_download_invoice">Загрузить</string>
+    <string name="label_file_successful_download">Файл %s загружен в %s</string>
+    <string name="label_invoice_pdf">Квитанция об оплате коммунальных услуг за %s</string>
+    <string name="label_table_service">Комм. услуга</string>
+    <string name="label_table_service_value">Значение (м3)</string>
+    <string name="label_table_service_amount">Сумма (руб.)</string>
+    <string name="label_table_services_amount">"Итого: %s"</string>
 </resources>

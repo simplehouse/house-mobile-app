@@ -17,7 +17,7 @@ import androidx.compose.ui.zIndex
 import io.devmartynov.house.R
 import io.devmartynov.house.app.helpers.Utils
 import io.devmartynov.house.domain.model.InvoiceEntity
-import io.devmartynov.house.ui.screen.invoices.model.InvoicesEvent
+import io.devmartynov.house.ui.screen.invoices.model.InvoiceAction
 import io.devmartynov.house.ui.screen.invoices.model.InvoicesState
 import io.devmartynov.house.ui.shared.Divider
 import io.devmartynov.house.ui.theme.Blue
@@ -27,8 +27,9 @@ import io.devmartynov.house.ui.theme.White
 fun InvoicesContent(
     modifier: Modifier = Modifier,
     uiState: InvoicesState,
-    handleEvent: (event: InvoicesEvent) -> Unit,
+    isPermissionGranted: Boolean,
     onBackPressed: () -> Unit,
+    onOptionSelected: (action: InvoiceAction, invoice: InvoiceEntity) -> Unit,
 ) {
     val isLoading = uiState.invoicesStatus.isLoading()
 
@@ -86,8 +87,9 @@ fun InvoicesContent(
             InvoiceItem(
                 date = Utils.formatDateString(invoice.createTime),
                 amount = invoice.getToPayAmount(),
+                canManipulateFile = isPermissionGranted,
                 onOptionSelected = { action ->
-
+                    onOptionSelected(action, invoice)
                 }
             )
             Divider(

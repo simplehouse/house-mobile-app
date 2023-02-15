@@ -68,7 +68,7 @@ class SignInViewModel @Inject constructor(
                 when (result) {
                     is Result.Success -> {
                         uiState.value = uiState.value.copy(
-                            status = ActionStatus.Success,
+                            status = ActionStatus.Success(),
                             email = null,
                             password = null,
                         )

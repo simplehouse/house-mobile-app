@@ -22,6 +22,7 @@ fun InvoiceItem(
     modifier: Modifier = Modifier,
     date: String,
     amount: Float,
+    canManipulateFile: Boolean,
     onOptionSelected: (action: InvoiceAction) -> Unit,
 ) {
     var expanded by remember { mutableStateOf(false) }
@@ -83,7 +84,11 @@ fun InvoiceItem(
                         fontSize = 18.sp,
                         fontFamily = GilroyFontMedium,
                         lineHeight = 25.sp,
-                        color = Black,
+                        color = if (canManipulateFile) {
+                            Black
+                        } else {
+                            Grey
+                        },
                     )
                 }
             }

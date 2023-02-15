@@ -104,7 +104,7 @@ class MainViewModel @Inject constructor(
                     is Result.Success -> {
                         uiState.value = uiState.value.copy(
                             user = result.value,
-                            getUserStatus = ActionStatus.Success
+                            getUserStatus = ActionStatus.Success()
                         )
                     }
                     is Result.Failure -> {

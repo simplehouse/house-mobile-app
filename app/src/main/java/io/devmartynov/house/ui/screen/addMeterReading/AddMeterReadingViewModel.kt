@@ -76,7 +76,7 @@ class AddMeterReadingViewModel @Inject constructor(
             withContext(Dispatchers.Main) {
                 uiState.value = uiState.value.copy(
                     meterReading = null,
-                    status = ActionStatus.Success,
+                    status = ActionStatus.Success(),
                 )
             }
         }
