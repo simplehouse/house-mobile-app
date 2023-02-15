@@ -12,7 +12,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.devmartynov.house.R
-import io.devmartynov.house.domain.model.SubmissionDate
+import io.devmartynov.house.domain.model.SubmissionDateEntity
 import io.devmartynov.house.domain.model.format
 import io.devmartynov.house.ui.shared.Button
 import io.devmartynov.house.ui.theme.*
@@ -20,7 +20,7 @@ import io.devmartynov.house.ui.theme.*
 @Composable
 fun ServiceStatus(
     modifier: Modifier = Modifier,
-    submissionDate: SubmissionDate?,
+    submissionDate: SubmissionDateEntity?,
     isDateExpired: Boolean,
     daysUntilDateExpiration: Int,
     navigateToAddMeterReading: () -> Unit,

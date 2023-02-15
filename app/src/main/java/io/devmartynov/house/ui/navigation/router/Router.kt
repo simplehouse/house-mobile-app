@@ -1,6 +1,6 @@
 package io.devmartynov.house.ui.navigation.router
 
-import io.devmartynov.house.domain.model.MeterReading
+import io.devmartynov.house.domain.model.MeterReadingEntity
 
 interface Router {
     fun navigateToProfile()
@@ -15,7 +15,7 @@ interface Router {
 
     fun navigateToAddMeterReading(service: Int)
 
-    fun navigateToMeterReading(meterReading: MeterReading)
+    fun navigateToMeterReading(meterReading: MeterReadingEntity)
 
     fun navigateToInvoices()
 }

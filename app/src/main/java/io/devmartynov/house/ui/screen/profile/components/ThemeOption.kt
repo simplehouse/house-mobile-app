@@ -9,7 +9,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import io.devmartynov.house.app.model.Theme
+import io.devmartynov.house.app.enums.Theme
 import io.devmartynov.house.ui.theme.Black
 import io.devmartynov.house.ui.theme.GilroyFontMedium
 

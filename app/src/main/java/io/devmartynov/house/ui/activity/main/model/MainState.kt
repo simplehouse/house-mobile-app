@@ -1,8 +1,8 @@
 package io.devmartynov.house.ui.activity.main.model
 
-import io.devmartynov.house.domain.model.User
+import io.devmartynov.house.domain.model.UserEntity
 import io.devmartynov.house.app.model.ActionStatus
-import io.devmartynov.house.app.model.Theme
+import io.devmartynov.house.app.enums.Theme
 
 /**
  * Состояние на активити(глобальное состояние)
@@ -16,5 +16,5 @@ data class MainState(
     val isAuthorized: Boolean = false,
     val theme: Theme = Theme.SYSTEM,
     val getUserStatus: ActionStatus = ActionStatus.Idle,
-    val user: User? = null,
+    val user: UserEntity? = null,
 )

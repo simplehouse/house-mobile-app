@@ -1,15 +1,15 @@
 package io.devmartynov.house.data.remote.mappers
 
-import io.devmartynov.house.data.remote.model.RemoteUser
-import io.devmartynov.house.domain.model.User
+import io.devmartynov.house.data.remote.model.User
+import io.devmartynov.house.domain.model.UserEntity
 
 /**
  * Маппинг в доменную модель
  *
  * @return доменную модель пользователя
  */
-fun RemoteUser.toDomainModel(): User {
-    return User(
+fun User.toDomainModel(): UserEntity {
+    return UserEntity(
         id = this.id,
         email = this.email,
         isBanned = this.isBanned == 0,

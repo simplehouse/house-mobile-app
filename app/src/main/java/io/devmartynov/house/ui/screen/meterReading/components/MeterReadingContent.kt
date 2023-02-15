@@ -10,13 +10,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import io.devmartynov.house.R
 import io.devmartynov.house.app.helpers.Utils
-import io.devmartynov.house.domain.model.MeterReading
+import io.devmartynov.house.domain.model.MeterReadingEntity
 import io.devmartynov.house.ui.shared.Button
 
 @Composable
 fun MeterReadingContent(
     modifier: Modifier = Modifier,
-    meterReading: MeterReading,
+    meterReading: MeterReadingEntity,
     onShare: () -> Unit,
 ) {
     Column(

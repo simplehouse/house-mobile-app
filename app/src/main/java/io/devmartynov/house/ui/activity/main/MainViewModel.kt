@@ -10,7 +10,7 @@ import io.devmartynov.house.domain.useCase.SetThemeUseCase
 import io.devmartynov.house.ui.activity.main.model.MainEvent
 import io.devmartynov.house.ui.activity.main.model.MainState
 import io.devmartynov.house.app.model.ActionStatus
-import io.devmartynov.house.app.model.Theme
+import io.devmartynov.house.app.enums.Theme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

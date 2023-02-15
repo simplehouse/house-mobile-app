@@ -21,9 +21,9 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.google.accompanist.pager.*
 import io.devmartynov.house.R
-import io.devmartynov.house.domain.model.MeterReading
+import io.devmartynov.house.domain.model.MeterReadingEntity
 import io.devmartynov.house.domain.model.Service
-import io.devmartynov.house.domain.model.SubmissionDate
+import io.devmartynov.house.domain.model.SubmissionDateEntity
 import io.devmartynov.house.ui.screen.main.model.MainScreenEvent
 import io.devmartynov.house.ui.screen.main.model.MainScreenState
 import io.devmartynov.house.ui.shared.gradientBackground
@@ -39,7 +39,7 @@ fun MainScreenContent(
     handleEvent: (event: MainScreenEvent) -> Unit,
     navigateToProfile: () -> Unit,
     navigateToAddMeterReading: (service: Int) -> Unit,
-    navigateToMeterReading: (meterReading: MeterReading) -> Unit,
+    navigateToMeterReading: (meterReading: MeterReadingEntity) -> Unit,
     getDaysUntilExpirationSubmissionDate: (service: Service) -> Int,
     isSubmissionDateExpired: (service: Service) -> Boolean,
 ) {
@@ -126,7 +126,7 @@ fun MainScreenContent(
                     1 -> uiState.waterDate
                     2 -> uiState.electricityDate
                     else -> ""
-                } as SubmissionDate?,
+                } as SubmissionDateEntity?,
                 navigateToAddMeterReading = {
                     navigateToAddMeterReading(pagerState.currentPage)
                 },

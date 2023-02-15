@@ -9,7 +9,7 @@ package io.devmartynov.house.domain.model
  * @param name имя пользователя
  * @param avatarUrl ссылка на аватар пользователя
  */
-data class User(
+data class UserEntity(
     val id: Int,
     val email: String,
     val isBanned: Boolean,

@@ -1,4 +1,4 @@
-package io.devmartynov.house.di
+package io.devmartynov.house.app.di
 
 import android.content.Context
 import dagger.Module
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class Helper {
+class HelperModule {
 
     @Provides
     @Singleton

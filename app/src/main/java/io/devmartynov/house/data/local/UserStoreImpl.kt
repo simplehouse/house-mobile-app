@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.devmartynov.house.app.AppConfig
-import io.devmartynov.house.domain.model.User
+import io.devmartynov.house.domain.model.UserEntity
 import io.devmartynov.house.domain.repositories.UserStore
 import javax.inject.Inject
 
@@ -20,7 +20,7 @@ class UserStoreImpl @Inject constructor(
             Context.MODE_PRIVATE
         )
 
-    override fun setUser(user: User) {
+    override fun setUser(user: UserEntity) {
         preferences.edit {
             putString(
                 appConfig.SETTINGS_PREFERENCES_USER_ID_KEY,
@@ -41,14 +41,14 @@ class UserStoreImpl @Inject constructor(
         }
     }
 
-    override fun getUser(): User? {
+    override fun getUser(): UserEntity? {
         val id = preferences.getString(appConfig.SETTINGS_PREFERENCES_USER_ID_KEY, null) ?: return null
 
         val email = preferences.getString(appConfig.SETTINGS_PREFERENCES_USER_EMAIL_KEY, null)
         val name = preferences.getString(appConfig.SETTINGS_PREFERENCES_USER_NAME_KEY, null)
         val avatarUrl = preferences.getString(appConfig.SETTINGS_PREFERENCES_USER_AVATAR_URL_KEY, null)
 
-        return User(
+        return UserEntity(
             id = id.toInt(),
             email = email ?: "",
             name = name ?: "",

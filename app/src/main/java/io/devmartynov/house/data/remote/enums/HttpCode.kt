@@ -1,4 +1,4 @@
-package io.devmartynov.house.data.remote
+package io.devmartynov.house.data.remote.enums
 
 /**
  * Коды состояния http

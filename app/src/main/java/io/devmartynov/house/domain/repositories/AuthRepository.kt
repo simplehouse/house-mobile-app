@@ -2,7 +2,7 @@ package io.devmartynov.house.domain.repositories
 
 import io.devmartynov.house.app.model.Result
 import io.devmartynov.house.domain.model.SignInResponse
-import io.devmartynov.house.domain.model.User
+import io.devmartynov.house.domain.model.UserEntity
 
 /**
  * Репозиторий авторизации
@@ -23,5 +23,5 @@ interface AuthRepository {
      *
      * @return в случае успеха модель пользователя иначе ошибки http
      */
-    suspend fun getUser(): Result<User>
+    suspend fun getUser(): Result<UserEntity>
 }

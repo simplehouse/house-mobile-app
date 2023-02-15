@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import io.devmartynov.house.R
 import io.devmartynov.house.app.helpers.Utils
-import io.devmartynov.house.domain.model.MeterReading
+import io.devmartynov.house.domain.model.MeterReadingEntity
 import io.devmartynov.house.domain.model.Service
 import io.devmartynov.house.ui.shared.Divider
 import io.devmartynov.house.ui.theme.Blue
@@ -21,10 +21,10 @@ import io.devmartynov.house.ui.theme.Blue
 @Composable
 fun MeterReadingsList(
     modifier: Modifier = Modifier,
-    meterReadings: List<MeterReading> = emptyList(),
+    meterReadings: List<MeterReadingEntity> = emptyList(),
     service: Service = Service.GAS,
     isLoading: Boolean = false,
-    onMeterReadingClick: (meterReadingId: MeterReading) -> Unit = {},
+    onMeterReadingClick: (meterReadingId: MeterReadingEntity) -> Unit = {},
 ) {
     LazyColumn(
         modifier = modifier,
@@ -49,7 +49,7 @@ fun MeterReadingsList(
                 )
             }
         }
-        items(meterReadings) { meterReading: MeterReading ->
+        items(meterReadings) { meterReading: MeterReadingEntity ->
             MeterReadingItem(
                 date = Utils.formatDateString(meterReading.createTime),
                 amount = meterReading.toPayAmount,

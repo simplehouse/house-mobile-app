@@ -1,7 +1,7 @@
 package io.devmartynov.house.ui.navigation.router
 
 import androidx.navigation.NavHostController
-import io.devmartynov.house.domain.model.MeterReading
+import io.devmartynov.house.domain.model.MeterReadingEntity
 import io.devmartynov.house.ui.navigation.model.Route
 
 class RouterImpl(
@@ -31,7 +31,7 @@ class RouterImpl(
         navController.navigate(Route.AddMeterReading.buildRoute(service))
     }
 
-    override fun navigateToMeterReading(meterReading: MeterReading) {
+    override fun navigateToMeterReading(meterReading: MeterReadingEntity) {
         navController.currentBackStackEntry?.savedStateHandle?.set(
             key = Route.MeterReading.PARAM_METER_READING,
             value = meterReading,

@@ -1,6 +1,6 @@
 package io.devmartynov.house.ui.screen.profile.model
 
-import io.devmartynov.house.app.model.Theme
+import io.devmartynov.house.app.enums.Theme
 
 
 /**

@@ -1,7 +1,7 @@
 package io.devmartynov.house.data.remote
 
 import io.devmartynov.house.data.remote.model.SubmissionDate
-import io.devmartynov.house.data.remote.model.RemoteMeterReading
+import io.devmartynov.house.data.remote.model.MeterReading
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.GET
@@ -14,7 +14,7 @@ import retrofit2.http.Query
 interface MeterReadingApi {
 
     @GET("meter-readings")
-    suspend fun getMeterReadings(@Query("service") service: Int): Response<List<RemoteMeterReading>>
+    suspend fun getMeterReadings(@Query("service") service: Int): Response<List<MeterReading>>
 
     /**
      * Список поданных показаний счетчика
@@ -23,7 +23,7 @@ interface MeterReadingApi {
     suspend fun saveMeterReading(
         @Field("value") value: Int,
         @Field("service") service: Int
-    ): Response<RemoteMeterReading>
+    ): Response<MeterReading>
 
     /**
      * Следующая дата подачи показаний счетчика

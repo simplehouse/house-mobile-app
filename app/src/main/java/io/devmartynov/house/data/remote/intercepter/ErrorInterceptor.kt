@@ -1,6 +1,6 @@
 package io.devmartynov.house.data.remote.intercepter
 
-import io.devmartynov.house.data.remote.HttpCode
+import io.devmartynov.house.data.remote.enums.HttpCode
 import io.devmartynov.house.app.model.Auth
 import okhttp3.Interceptor
 import okhttp3.Response

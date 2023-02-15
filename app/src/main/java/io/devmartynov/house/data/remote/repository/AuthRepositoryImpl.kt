@@ -6,7 +6,7 @@ import io.devmartynov.house.app.model.Result
 import io.devmartynov.house.domain.model.SignInResponse
 import io.devmartynov.house.domain.repositories.AuthRepository
 import javax.inject.Inject
-import io.devmartynov.house.domain.model.User
+import io.devmartynov.house.domain.model.UserEntity
 
 class AuthRepositoryImpl @Inject constructor(
     private val authApi: AuthApi
@@ -45,7 +45,7 @@ class AuthRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getUser(): Result<User> {
+    override suspend fun getUser(): Result<UserEntity> {
         try {
             val response = authApi.init()
 

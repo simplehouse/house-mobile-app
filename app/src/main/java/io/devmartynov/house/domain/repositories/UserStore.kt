@@ -1,6 +1,6 @@
 package io.devmartynov.house.domain.repositories
 
-import io.devmartynov.house.domain.model.User
+import io.devmartynov.house.domain.model.UserEntity
 
 /**
  * Локальное хранилище для данных пользователя
@@ -11,12 +11,12 @@ interface UserStore {
      *
      * @param user пользователь
      */
-    fun setUser(user: User)
+    fun setUser(user: UserEntity)
 
     /**
      * Получает данные о пользователе
      *
      * @return пользователя
      */
-    fun getUser(): User?
+    fun getUser(): UserEntity?
 }

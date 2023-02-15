@@ -6,7 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.devmartynov.house.domain.useCase.GetUserUseCase
 import io.devmartynov.house.ui.screen.profile.model.ProfileEvent
 import io.devmartynov.house.ui.screen.profile.model.ProfileState
-import io.devmartynov.house.app.model.Theme
+import io.devmartynov.house.app.enums.Theme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

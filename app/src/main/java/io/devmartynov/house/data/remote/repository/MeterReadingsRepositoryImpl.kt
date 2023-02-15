@@ -2,18 +2,18 @@ package io.devmartynov.house.data.remote.repository
 
 import io.devmartynov.house.data.remote.MeterReadingApi
 import io.devmartynov.house.data.remote.mappers.toDomainModel
-import io.devmartynov.house.domain.model.MeterReading
+import io.devmartynov.house.domain.model.MeterReadingEntity
 import io.devmartynov.house.domain.model.Service
 import io.devmartynov.house.domain.repositories.MeterReadingsRepository
 import io.devmartynov.house.app.model.Result
-import io.devmartynov.house.domain.model.SubmissionDate
+import io.devmartynov.house.domain.model.SubmissionDateEntity
 import java.io.IOException
 import javax.inject.Inject
 
 class MeterReadingsRepositoryImpl @Inject constructor(
     private val meterReadingApi: MeterReadingApi,
 ) : MeterReadingsRepository {
-    override suspend fun getAll(service: Service): Result<List<MeterReading>> {
+    override suspend fun getAll(service: Service): Result<List<MeterReadingEntity>> {
         try {
             val response = meterReadingApi.getMeterReadings(service.ordinal)
             if (response.isSuccessful) {
@@ -33,7 +33,7 @@ class MeterReadingsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun save(value: Int, service: Service): Result<MeterReading> {
+    override suspend fun save(value: Int, service: Service): Result<MeterReadingEntity> {
         try {
             val response = meterReadingApi.saveMeterReading(value, service.ordinal)
 
@@ -53,7 +53,7 @@ class MeterReadingsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getNextSubmissionDate(): Result<SubmissionDate> {
+    override suspend fun getNextSubmissionDate(): Result<SubmissionDateEntity> {
         try {
             val response = meterReadingApi.getNextSubmissionDate()
 

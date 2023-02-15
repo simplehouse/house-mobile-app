@@ -1,4 +1,4 @@
-package io.devmartynov.house.di
+package io.devmartynov.house.app.di
 
 import dagger.Module
 import dagger.Provides

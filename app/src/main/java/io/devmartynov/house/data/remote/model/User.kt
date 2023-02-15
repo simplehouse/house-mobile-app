@@ -11,7 +11,7 @@ package io.devmartynov.house.data.remote.model
  * @param phone номер телефона пользователя
  * @param createTime время создания пользователя
  */
-data class RemoteUser(
+data class User(
     val id: Int,
     val email: String,
     val phone: String?,

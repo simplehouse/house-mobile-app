@@ -2,7 +2,7 @@ package io.devmartynov.house.domain.useCase
 
 import javax.inject.Inject
 import io.devmartynov.house.app.model.Result
-import io.devmartynov.house.domain.model.User
+import io.devmartynov.house.domain.model.UserEntity
 import io.devmartynov.house.domain.repositories.AuthRepository
 import io.devmartynov.house.domain.repositories.UserStore
 
@@ -20,7 +20,7 @@ class GetUserUseCase @Inject constructor(
      *
      * @return информацию о пользователе либо ошибки
      */
-    suspend operator fun invoke(): Result<User> {
+    suspend operator fun invoke(): Result<UserEntity> {
         val user = userStore.getUser()
         if (user != null) {
             return Result.Success(value = user)
