@@ -5,7 +5,7 @@
 
 # Коммуналка
 
-### Подавай показания счетчиков, просматривай историю показаний
+### Подавай показания счетчиков, просматривай историю показаний, скачивай квитанции
 
 [![Android](https://img.shields.io/badge/Android-grey?logo=android&style=flat)](https://www.android.com/)
 [![AndroidAPI](https://img.shields.io/badge/API-25%2B-brightgreen.svg?style=flat)](https://www.android.com/)
