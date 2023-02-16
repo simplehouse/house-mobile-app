@@ -34,9 +34,11 @@
 квитанцией прямо в личные сообщения мессенджера. За такую работу представитель получает от обслуживающей организации
 денежные средства.
 
-<p style="margin-top: 60px; margin-bottom: 60px;" align="center">
-    <img src="https://github.com/simplehouse/house-mobile-app/blob/main/docs/images/work_scheme.png">
-</p>
+<div align="center">
+    <p>
+        <img src="https://github.com/simplehouse/house-mobile-app/blob/main/docs/images/work_scheme.png">
+    </p>
+</div>
 
 Что же здесь не так?
 
@@ -59,9 +61,11 @@
 Я предлагаю создать систему, т.е. набор программ которые автоматизируют конкретно этот процесс.
 Это именно система. Мобильное приложение - кусочек этой системы.
 
-<p style="margin-top: 60px; margin-bottom: 60px;" align="center">
-    <img src="https://github.com/simplehouse/house-mobile-app/blob/main/docs/images/new_work_scheme.png">
-</p>
+<div align="center">
+    <p>
+        <img src="https://github.com/simplehouse/house-mobile-app/blob/main/docs/images/new_work_scheme.png">
+    </p>
+</div>
 
 Как приложение улучшит работу?
 
